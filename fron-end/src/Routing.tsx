@@ -16,8 +16,7 @@ export const Routing = () => {
             <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
-                <Route path="/login"
-                    element={<LogInPage />}>
+                <Route path="/login" element={<LogInPage />}>
                 </Route>
                 <Route path="/reset-password/:passwordResetCode"
                     element={<PasswordResetLandingPage />}>

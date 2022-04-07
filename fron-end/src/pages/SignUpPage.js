@@ -22,17 +22,23 @@ export const SignUpPage = () => {
       }
 
     const onSignUpClicked = async () => {
-        const response = await axios.post('/api/signup', {
+        await axios.post('/api/signup', {
             email: emailValue,
             password: passwordValue,
+        }).then((response) => {
+            const {token} = response.data
+            setToken(token);
+            pleaseVerify();
+        }).catch(function (error) {
+            if (error.response) {
+            
+              // Request made and server responded
+              console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
         
-                
-    
+            }
         });
-        console.log(response)
-        const {token} = response.data
-        setToken(token);
-        pleaseVerify();
     }
     return (
         <div className="content-container">
