@@ -3,14 +3,14 @@ import jwt  from 'jsonwebtoken'
 import { getDbConnection } from '../db'
 
 export const logInRoute  = {
-    path: '/api/login',
+    path: '/login',
     method: 'post',
     handler: async (req, res) => {
         const { email, password } = req.body;
         console.log(req.body)
         const db = getDbConnection('react-auth-db');
         const user = await db.collection('users').findOne({ email })
-        console.log(user)
+        // console.log(user)
         if(!user) return res.sendStatus(401);
 
         const { _id: id, isVerified, passwordHash, info} = user;

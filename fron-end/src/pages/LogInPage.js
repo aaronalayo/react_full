@@ -10,10 +10,8 @@ export const LogInPage = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const [showErrorMessage, setShowErrorMessage] = useState(false);
-    
+    const [showErrorMessage, setShowErrorMessage] = useState(false);  
     const [ googleOauthUrl, setgoogleOauthUrl ] = useState('');
-
     const { token: oauthToken} = useQueryParams();
         
     const navigate = useNavigate();
@@ -55,19 +53,22 @@ export const LogInPage = () => {
       function signup() {
         navigate( '/signup')
       };
-      
+      function teacherOverview(){
+          navigate('/teacher_overview')
+      }
     const onLogInClicked = async () => {
         await axios.post('/api/login', {
             email: emailValue,
             password: passwordValue,
         }).then((response) => {
+            console.log(response)
             const {token} = response.data;
             setToken(token);
-            home();
+            teacherOverview();
         }).catch(function (error) {
             if (error.response) {
                 
-            setShowErrorMessage(true)
+            setShowErrorMessage(error.response.data)
 
             // Request made and server responded
             console.log(error.response.data);
@@ -81,12 +82,11 @@ export const LogInPage = () => {
     return (
         <div className="content-container">
             <h1>Log In</h1>
-            {errorMessage && <div className="fail">{errorMessage}</div>}
-            {showErrorMessage && <div className="fail">Uh oh... something went wrong and we couldn't log in</div>}
+            {showErrorMessage && <div className="fail">{showErrorMessage}</div>}            
             <input
                 value={emailValue}
                 onChange={e => setEmailValue(e.target.value)}
-                placeholder="someone@gmail.com"/>
+                placeholder="someone@email.com"/>
             <input 
                 type="password"
                 value={passwordValue}

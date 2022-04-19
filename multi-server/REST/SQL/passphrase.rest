@@ -1,0 +1,21 @@
+###
+POST http://localhost:8080/sql/passphrase
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQVNCQ0BrZWEuZGsiLCJpZCI6MSwiaWF0IjoxNjQzNDU3MDQ2fQ.kjLkG0mVS8i1UzVhbcX2fD7ovRi9ZquIVuTLZRgXVmc
+Content-Type: application/json
+
+{
+    "teacher_id": "1",
+    "subject_id": "1",
+    "semester": "SD21i",
+    "passphrase": "blue little monkeys"
+}
+
+###
+GET http://localhost:8080/sql/passphrase/mySubjects
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQVNCQ0BrZWEuZGsiLCJpZCI6MSwiaWF0IjoxNjQzNDU3MDQ2fQ.kjLkG0mVS8i1UzVhbcX2fD7ovRi9ZquIVuTLZRgXVmc
+Content-Type: application/json
+
+{
+    "teacher_id": "1"
+}
+

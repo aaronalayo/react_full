@@ -17,21 +17,28 @@ h1 {
 }
 
 hr {
-    margin: 32px 0;
+    margin: 32px auto;
+    width: 50%;
 }
 
-button, input {
+
+button, input, select {
     border-radius: 8px;
     box-sizing: border-box;
     display: block;
     font-size: 16px;
-    margin: 8px 0;
+    margin: 8px auto;
     padding: 8px;
-    width: 100%;
+    width: 50%;
 }
 
 input {
     border: 1px solid black;
+    size: 2em;
+}
+select {
+    border: 1px solid black;
+    size: 2em;
 }
 
 button {
@@ -60,15 +67,17 @@ button {
 .success {
     background-color: #90ee90;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin: 8px auto;
     padding: 16px;
     text-align: center;
+    width: 50%;
 }
 
 .fail {
     background-color: #ffcccb;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin: 8px auto;
     padding: 16px;
     text-align: center;
+    width: 50%;
 }

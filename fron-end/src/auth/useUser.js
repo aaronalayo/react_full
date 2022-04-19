@@ -3,7 +3,7 @@ import { useToken } from "./useToken";
 
 export const useUser = () => {
     const [token] = useToken();
-
+    
     const getPayLoadFromToken = token => {
         const encodedPayload = token.split('.')[1];
         return JSON.parse(atob(encodedPayload))
@@ -20,6 +20,6 @@ export const useUser = () => {
             setUser(getPayLoadFromToken(token));
         }
     }, [token]);
-
+   
     return user
 }

@@ -1,0 +1,52 @@
+###
+GET http://localhost:8080/mongo/student/findAll
+
+###
+GET http://localhost:8080/mongo/student/find/61d603bbcb24a06e57d07568
+
+###
+GET http://localhost:8080/mongo/student/delete/61d603bbcb24a06e57d07568
+
+###
+PATCH http://localhost:8080/mongo/student/update/61d603bbcb24a06e57d07569
+Content-Type: application/json
+
+{
+    "name": "StefB",
+    "user_name": "Tariq@kea.dk",
+    "password": "12345678",
+    "semester": "1",
+    "subjects": [
+        {
+            "subjects_name": "Database"
+        },
+        {
+            "subjects_name": "DLS"
+        },
+        {
+            "subjects_name": "Testing"
+        }
+    ]
+}
+
+###
+POST http://localhost:8080/mongo/student/create
+Content-Type: application/json
+
+{
+    "name": "Tariq Z3",
+    "user_name": "Tariq@kea.dk3",
+    "password": "12345678",
+    "semester": "1",
+    "subjects": [
+        {
+            "subjects_name": "Database"
+        },
+        {
+            "subjects_name": "DLS"
+        },
+        {
+            "subjects_name": "Testing"
+        }
+    ]
+}

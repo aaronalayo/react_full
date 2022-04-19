@@ -1,0 +1,48 @@
+name: Build app and run tests
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DB_HOST: localhost
+      DB_USER: root
+      DB_SECRET: password
+      MYSQLDB_DATABASE: rollcall_db
+      MYSQLDB_LOCAL_PORT: 3307
+      MYSQLDB_ROOT_PASSWORD: password
+      MYSQLDB_DOCKER_PORT: 3308
+      NODE_LOCAL_PORT: 8082
+      NODE_DOCKER_PORT: 8080
+      JWT_SECRET: samesamejobs
+      MONGO_DOCKER_ROOT_USERNAME: root
+      MONGO_DOCKER_ROOT_PASSWORD: 12345678
+      MONGO_DOCKER_PORT: 27017
+      MDB_CONNECTION: mongodb://${MONGO_DOCKER_ROOT_USERNAME}:${MONGO_DOCKER_ROOT_PASSWORD}@mongo_container:27017
+      NEO_HOST: bolt://localhost:7687
+      NEO_SECRET: password
+      NEO_USER: neo4j
+      PASSPHRASE_DURATION_SECONDS: 30
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Install Node Dependencies
+        run: npm install
+      - name: Create empty .env file (required by docker-compose)
+        run: touch .env
+      - name: Start containers
+        run: docker-compose up -d --build
+      - name: Wait for containers to start
+        run: sleep 20s
+      - name: Test connection to Database
+        run: mysql -h 127.0.0.1 -P $MYSQLDB_LOCAL_PORT -u root -p${MYSQLDB_ROOT_PASSWORD} --database="${MYSQLDB_DATABASE}"
+      - name: Test that the view exists
+        run: mysql -h 127.0.0.1 -P $MYSQLDB_LOCAL_PORT -u root -p${MYSQLDB_ROOT_PASSWORD} --database="${MYSQLDB_DATABASE}" --execute="select * from teachers_semesters_subjects;"
+      - name: Run Unit Tests
+        run: npm test
+      - name: Stop containers and remove volumes
+        run: docker-compose down -v
