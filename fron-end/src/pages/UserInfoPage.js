@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios';  // to send asynchronous HTTP requests to REST endpoints
 import { useToken } from '../auth/useToken';
 import { useUser } from '../auth/useUser';
 axios.defaults.baseURL = 'http://localhost:8080';

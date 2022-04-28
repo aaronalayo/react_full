@@ -4,7 +4,7 @@ const db = require('../connectors/db.mysql');
 
 
 // Create and Save a new Teacher
-router.post("/createNew", (req, res) => {
+router.post("/create", (req, res) => {
 
      /*
     #swagger.tags = ['teacher', 'mysql']

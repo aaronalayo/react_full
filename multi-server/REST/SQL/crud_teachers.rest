@@ -1,36 +1,36 @@
 
-GET http://localhost:8080/sql/teachers/all
+GET http://localhost:8080/api/teachers/all
 Content-Type: application/json
 
 ###
-POST http://localhost:8080/sql/teachers/createNew
+POST http://localhost:8080/api/teachers/create
 Content-Type: application/json
 
 {
-    "first_name": "John",
-    "last_name": "Doeh",
-    "email": "sage@test.com",
+    "first_name": "Henrik",
+    "last_name": "Strom",
+    "email": "henrik@test.com",
     "password": "12345678",
-    "department_id": 2
+    "department_id": 1
 }
 
 ###
-GET http://localhost:8080/sql/teachers/findOne/2
+GET http://localhost:8080/api/teachers/findOne/8
 Content-Type: application/json
 
 ###
-POST http://localhost:8080/sql/teachers/updateOne/2
+POST http://localhost:8080/api/teachers/updateOne/8
 Content-Type: application/json
 
 {
     "first_name": "Michael",
     "last_name": "Doeh",
-    "email": "sage@test.com",
+    "email": "johny@test.com",
     "password": "12345678",
-    "department_id": "2"
+    "department_id": "1"
 }
 
 ###
-POST http://localhost:8080/sql/teachers/delete/3
+POST http://localhost:8080/api/teachers/delete/8
 Content-Type: application/json
 
