@@ -9,8 +9,12 @@ export const TeacherOverviewPage = () => {
   const [token] = useToken();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [value, setValue] = useState("");
+  const [selected, setSelected] = useState(null);
   const [options, setOptions] = useState([]);
+  const [passPhraseValue, setPassPhraseValue] = useState('');
+  const [subjectIdValue, setSubjectIdValue ] = useState('');
+  const [semesterValue, setSemesterValue ] = useState('');
+  const [subjectName, setSubjectName] = useState('');
 
   useEffect(() => {
       axios
@@ -35,10 +39,13 @@ export const TeacherOverviewPage = () => {
         });
 
   }, [token]);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const onGenerateClicked = async () => {
+    console.log(selected.split(' - ')[2])
+    setSubjectIdValue(selected.split(' - ')[0]);
+    setSubjectName(selected.split(' - ')[2]);
+    setSemesterValue(selected.split(' - ')[1]);
+    console.log(subjectIdValue, subjectName)
+  }
 
   useEffect(() => {
     if (showSuccessMessage || showErrorMessage) {
@@ -49,15 +56,16 @@ export const TeacherOverviewPage = () => {
     }
   }, [showSuccessMessage, showErrorMessage]);
 
-  const Dropdown = ({ label, value, options, onChange }) => {
+  const Dropdown = ({ label, options }) => {
     return (
       <label>
         {label}
-        <select value={value} onChange={onChange}>
+        <select  onChange={(e) => setSelected(e.target.value || null)}
+        value={selected || ""}>
         {options.map((option) =>
-        
-       <option key={option.subject_id} >
-        {option.subject_name}
+         
+       <option key={option.subject_id} value={option.subject_id}>
+      {option.subject_id } - {option.semester} - {option.subject_name}
        </option>
       )}
         </select>
@@ -78,24 +86,29 @@ export const TeacherOverviewPage = () => {
         <Dropdown
           label="Select Semester and Subject"
           options={options}
-          value={value}
-          onChange={handleChange}
+          value={selected}
         />
       </div>
       <br />
-      <input type="hidden" id="selectedSemester" name="semester" required />
-      <input type="hidden" id="selectedSubjectID" name="subject_id" required />
+      {/* <input type="hidden" id="selectedSemester" name="semester" required />
+      <input type="hidden" id="selectedSubjectID" name="subject_id" required /> */}
       <input
         type="text"
+        
         name="passphrase"
         id="passphrase_input"
         placeholder="Passphrase"
+        onChange={e => setPassPhraseValue(e.target.value)}
+       
         required
+        
       />
       <br />
-      <button type="submit" id="submit-passphrase-button">
-        Generate
-      </button>
+      <button
+        disabled={!passPhraseValue || !selected} 
+        type="submit" 
+        id="submit-passphrase-button"
+        onClick={onGenerateClicked}>Generate</button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 ###
-POST http://localhost:8080/sql/passphrase
-Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQVNCQ0BrZWEuZGsiLCJpZCI6MSwiaWF0IjoxNjQzNDU3MDQ2fQ.kjLkG0mVS8i1UzVhbcX2fD7ovRi9ZquIVuTLZRgXVmc
+POST http://localhost:8080/api/passphrase
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQU5ETEBrZWEuZGsiLCJpZCI6NSwiaWF0IjoxNjUxMTQ0Mjk5LCJleHAiOjE2NTEzMTcwOTl9.mX5c5xy8jX0XT4RrlzH7eWT4vf7H_4yDcM822DZavjM
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/sql/passphrase/mySubjects
+GET http://localhost:8080/api/passphrase/mySubjects
 Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQVNCQ0BrZWEuZGsiLCJpZCI6MSwiaWF0IjoxNjQzNDU3MDQ2fQ.kjLkG0mVS8i1UzVhbcX2fD7ovRi9ZquIVuTLZRgXVmc
 Content-Type: application/json
 

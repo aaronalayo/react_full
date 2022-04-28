@@ -1,15 +1,15 @@
 ### Login Teacher
-POST http://localhost:8080/sql/login/
+POST http://localhost:8080/api/login/
 Content-Type: application/json
 
 {
     "email": "ASBC@kea.dk", 
-    "password": "weqweqwe"
+    "password": "12345678"
 
 }
 
 ### Login Student
-POST http://localhost:8080/sql/login/
+POST http://localhost:8080/api/login/
 Content-Type: application/json
 
 {
@@ -19,4 +19,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/sql/logout/
+GET http://localhost:8080/api/logout/

@@ -10,20 +10,20 @@ const { authenticateToken } = require('../util/authenticate');
 
 router.post('/login', ratelimiter, async (req, res) => {
 
-    /*
-        #swagger.tags = ['authentication/authorization', 'mysql']
-        #swagger.summary = 'login for students and teachers and get token'
-        #swagger.consumes = ['application/json']
-        #swagger.parameters['body'] = {
+    
+       /* swagger.tags = ['authentication/authorization', 'mysql']
+        swagger.summary = 'login for students and teachers and get token'
+        swagger.consumes = ['application/json']
+        swagger.parameters['body'] = {
             in: 'body',
             description: 'credential set of email and password',
             required: true,
             schema: {
                 email: "ASBC@kea.dk", 
-                password: "weqweqwe"
+                password: "12345678"
             }
         }
-        #swagger.responses[200] = { description: "Succesfull login and redirect to user's home" } */
+        swagger.responses[200] = { description: "Succesfull login and redirect to user's home" } */
 
     try {
         console.log(req.body)
@@ -39,7 +39,7 @@ router.post('/login', ratelimiter, async (req, res) => {
         const student = await db.sequelize.models.students.findOne({ where: { user_name: email } });
 
         if (teacher == null && student == null) {
-            res.status(400).json({ message: "User doesn't exist" });
+            res.status(400).json("User doesn't exist" );
         } else if (teacher) {
             // if (await bcrypt.compare(plainPassword, teacher.password)) {
             //     const accessToken = jwt.sign({ role: 'teacher', email: teacher.email, id: teacher.teacher_id }, process.env.JWT_SECRET);
