@@ -29,23 +29,23 @@ INSERT INTO `rollcall_db`.`subjects` (`subject_name`,`program_id`) VALUES ('Inte
 INSERT INTO `rollcall_db`.`subjects` (`subject_name`,`program_id`) VALUES ('Process,Design,Experiments and Prototyping','4');
  
  
-INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Asger Batting','Clausen','ASBC@kea.dk','ASBC','1');
-INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Tomas','Pesek','TOMP@kea.dk','TOMP','1');
-INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Jarl','Tuxen','JART@kea.dk','JART','1');
-INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Andrea','Corradini','ANDC@kea.dk','ANDC','1');
-INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Anders','Latif','ANDL@kea.dk','ANDL','1');
+INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`department_id`) VALUES ('Asger Batting','Clausen','ASBC@kea.dk','ASBC','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`department_id`) VALUES ('Tomas','Pesek','TOMP@kea.dk','TOMP','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`department_id`) VALUES ('Jarl','Tuxen','JART@kea.dk','JART','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`department_id`) VALUES ('Andrea','Corradini','ANDC@kea.dk','ANDC','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`department_id`) VALUES ('Anders','Latif','ANDL@kea.dk','ANDL','null', '0', 'null','null','1');
  
  
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Ole','Sørensen','Ole1234@kea.dk','Ole1234','2');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Maria', 'Van','M1234@kea.dk','M1234','3');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Archana', 'Maurya','arch000@kea.dk','arch000','1');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Tariq', 'Zamani' ,'Tariq11@kea.dk', 'Tariq11','1');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Stefanos','Agelastos','Stef2222@kea.dk','Stef2222','1');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Anne','Sørensen','Anne1234@kea.dk','Anne1234','2');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Maya', 'Henson','Maya234@kea.dk','Maya234','3');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Archi', 'Peterson','archiP@kea.dk','archiP','4');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Tara', 'Khamani' ,'TaraK@kea.dk', 'TaraK','4');
-INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`program_id`) VALUES ('Kenneth','Henson','kenneth11@kea.dk','kenneth11','4');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Ole','Sørensen','Ole1234@kea.dk','Ole1234','null', '0', 'null','null','2');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Maria', 'Van','M1234@kea.dk','M1234','null', '0', 'null','null','3');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Archana', 'Maurya','arch000@kea.dk','arch000','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Tariq', 'Zamani' ,'Tariq11@kea.dk', 'Tariq11','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Stefanos','Agelastos','Stef2222@kea.dk','Stef2222','null', '0', 'null','null','1');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Anne','Sørensen','Anne1234@kea.dk','Anne1234','null', '0', 'null','null','2');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Maya', 'Henson','Maya234@kea.dk','Maya234','null', '0', 'null','null','3');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Archi', 'Peterson','archiP@kea.dk','archiP','null', '0', 'null','null','4');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Tara', 'Khamani' ,'TaraK@kea.dk', 'TaraK','null', '0', 'null','null','4');
+INSERT INTO `rollcall_db`.`students` (`first_name`,`last_name`,`user_name`,`password`,`google_id`, `is_verified`,`verification_string`,`oauth_email`,`program_id`) VALUES ('Kenneth','Henson','kenneth11@kea.dk','kenneth11','null', '0', 'null','null','4');
 
 
 INSERT into `rollcall_db`.`students_subjects` (semester, student_id, subject_id) values ('SD21i', 1, 1);

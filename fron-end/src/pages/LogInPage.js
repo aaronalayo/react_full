@@ -21,7 +21,7 @@ export const LogInPage = () => {
     useEffect(() => {
         if(oauthToken) {
             setToken(oauthToken);
-            navigate('/')
+            navigate('/teacher_overview')
         }
         
     }, [oauthToken, setToken, navigate])

@@ -14,7 +14,7 @@ export const Routing = () => {
     return (
         <BrowserRouter>
             <Routes>
-            <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
+            {/* <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} /> */}
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
