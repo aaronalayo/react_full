@@ -21,7 +21,7 @@ router.post('/passphrase/mySubjects', authenticateToken('teacher'), function (re
             where: { teacher_id: providedTeacherId },
         }
     ).then((foundTeacherAndSubjects) => {
-        console.log(foundTeacherAndSubjects.forEach(element => console.log(element.toJSON())));
+        // console.log(foundTeacherAndSubjects.forEach(element => console.log(element.toJSON())));
         const list = [];
         foundTeacherAndSubjects.forEach(element => list.push({semester: element.semester, subject_name: element.subject_name, subject_id: element.subject_id}));
         res.send(list);

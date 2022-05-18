@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`teachers` (
 `is_verified` BOOLEAN NOT NULL DEFAULT 0,
 `verification_string` VARCHAR(120),
 `oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `department_id` INT NOT NULL);
 
 -- -----------------------------------------------------
@@ -85,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`students` (
 `is_verified` BOOLEAN NOT NULL DEFAULT 0,
 `verification_string` VARCHAR(120),
 `oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `program_id` INT NOT NULL);
 
 

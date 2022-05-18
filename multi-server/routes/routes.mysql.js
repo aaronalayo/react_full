@@ -7,6 +7,9 @@ const registerRoute = require('./router.register');
 const teacherAPI = require('./router.teacherAPI');
 const getGoogleOauthUrlRoute = require('./getGoogleOauthUrlRoute');
 const googleOauthCallbackRoute = require('./googleOauthCallbackRoute');
+const forgotPasswordRoute = require('./forgotPasswordRoute');
+const resetPasswordRoute = require('./resetPasswordRoute');
+const verifyEmailRoute = require('./verifyEmailRoute');
 const baseRoute = '/api';
 
 module.exports = function (app) {
@@ -18,4 +21,7 @@ module.exports = function (app) {
     app.use(baseRoute + '/teachers', teacherAPI);
     app.use( getGoogleOauthUrlRoute);
     app.use( googleOauthCallbackRoute);
+    app.use(baseRoute, forgotPasswordRoute);
+    app.use(baseRoute, resetPasswordRoute);
+    app.use(baseRoute, verifyEmailRoute);
 }

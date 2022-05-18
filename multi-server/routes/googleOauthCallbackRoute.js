@@ -32,7 +32,7 @@ router.get('/auth/google/callback', async(req, res) =>{
     const { code } = req.query;
 
     const oauthUserInfo = await getGoogleUser({ code });
-    console.log(oauthUserInfo)
+    
     const updateduser = await updateOrCreateUserFromOauth({ oauthUserInfo });
     
     const { role, email, id, isVerified } = updateduser;

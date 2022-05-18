@@ -41,6 +41,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(120),
       allowNull: true
     },
+    password_reset_code: {
+      type: DataTypes.STRING(120),
+      allowNull: true
+    },
     department_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

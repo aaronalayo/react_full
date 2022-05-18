@@ -4,7 +4,7 @@ export const EmailVerificationSuccess = () => {
     const navigate = useNavigate();
  
     function home() {
-        navigate('/')
+        navigate('/teacher_overview')
       }
     return  (
         <div className="content-container">
