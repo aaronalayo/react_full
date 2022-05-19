@@ -7,25 +7,25 @@ POST http://localhost:8080/api/teachers/create
 Content-Type: application/json
 
 {
-    "first_name": "Henrik",
+    "first_name": "Erika",
     "last_name": "Strom",
-    "email": "henrik@test.com",
+    "email": "Erikak@test.com",
     "password": "12345678",
     "department_id": 1
 }
 
 ###
-GET http://localhost:8080/api/teachers/findOne/8
+GET http://localhost:8080/api/teachers/findOne/1
 Content-Type: application/json
 
 ###
-POST http://localhost:8080/api/teachers/updateOne/8
+POST http://localhost:8080/api/teachers/updateOne/1
 Content-Type: application/json
 
 {
-    "first_name": "Michael",
+    "first_name": "Michaellla",
     "last_name": "Doeh",
-    "email": "johny@test.com",
+    "email": "joh@test.com",
     "password": "12345678",
     "department_id": "1"
 }

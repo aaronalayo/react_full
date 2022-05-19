@@ -9,10 +9,17 @@ import { PleaseVerifyEmailPage } from "./pages/PleaseVerifyEmailPage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
+import { Admin } from "./pages/Admin";
+import { AddUpdate } from "./pages/AddUpdate";
+import { ToastContainer} from 'react-toastify';
+
+
+
 
 export const Routing = () => {
     return (
         <BrowserRouter>
+            <ToastContainer position="top-center"></ToastContainer>
             <Routes>
             <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
@@ -30,6 +37,10 @@ export const Routing = () => {
 
                 </Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
+                <Route path="/admin_overview" element={<Admin />}></Route>
+                
+                <Route path="/addTeacher" element={<AddUpdate />}> </Route>
+                <Route path="/updateTeacher/:id" element={<AddUpdate/>}> </Route>
             </Routes>
             
         </BrowserRouter>

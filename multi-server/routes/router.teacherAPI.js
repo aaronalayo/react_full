@@ -71,7 +71,8 @@ router.get("/findOne/:id", (req, res) => {
                 res.status(404).send("Teacher not found")
             }
             else {
-                res.send(oneTeacher.toJSON())
+                res.json({ oneTeacher });
+                //res.send(oneTeacher.toJSON())
             }
         })
         .catch(err => res.status(500).send('Something went wrong'));
@@ -104,6 +105,7 @@ router.post("/updateOne/:id", (req, res) => {
     } */
 
     const { first_name, last_name, email, department_id, password } = req.body;
+    
 
     db.sequelize.models.teachers.update({
 
@@ -120,7 +122,7 @@ router.post("/updateOne/:id", (req, res) => {
             res.status(404).send("Teacher not found")
         }
         else {
-            res.send("Updated teacher with ID: " + req.params.id)
+            res.send("Updated teacher with ID: " + req.params.id);
         }
     }).catch(error => {
         console.log(error)
