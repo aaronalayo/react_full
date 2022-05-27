@@ -24,7 +24,7 @@ export const AddUpdate = () => {
   const [state, setState] = useState(initialState);
   // destructuring the feilds from state (to avoid writting ex. state.first_name)
   const { first_name, last_name, email, password, department_id } =
-    initialState;
+    state;
 
   const navigate = useNavigate();
   const id  = useParams();
