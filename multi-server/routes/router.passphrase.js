@@ -77,10 +77,11 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
                 // if null, there was no match
                 if (!foundTeacher) {
                     // so throw custom error
-                    throw {
-                        custom_status: 404,
-                        custom_msg: "Teacher not found"
-                    };
+                    // throw {
+                    //     custom_status: 404,
+                    //     custom_msg: "Teacher not found"
+                    // };
+                    res.status(404).json({ message: "Teacher not found" });
                 }
                 // else keep looking for teacher, this time:
                 // with provided id 
@@ -103,10 +104,12 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
                 // if null, there was no match
                 if (!foundTeacherAndSubject) {
                     // so throw custom error
-                    throw {
-                        custom_status: 404,
-                        custom_msg: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester
-                    };
+                    // throw {
+                    //     custom_status: 404,
+                    //     custom_msg: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester
+                    // };
+                    res.status(404).json({ message: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester });
+                    
                 }
 
                 // else start saving a new presence key
@@ -123,16 +126,17 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
             .then(() => {
                 return t.commit()
             })
-            .then(() => res.send(providedPresenceKey))
+            .then((providedPresenceKey) =>
+             res.status(200).json({providedPresenceKey}))
             .catch(function (err) {
                 t.rollback();
                 let { custom_status, custom_msg } = err
                 if (custom_status, custom_msg) {
-                    res.status(404).send(custom_msg);
+                    res.status(404).json({message: custom_msg});
                     throw err;
                 }
                 if (err.name === 'SequelizeUniqueConstraintError') {
-                    res.status(409).send('Passphrase taken, please choose a different one')
+                    res.status(409).json('Passphrase taken, please choose a different one')
                     throw err;
                 }
                 res.status(500).send('Something went wrong')
