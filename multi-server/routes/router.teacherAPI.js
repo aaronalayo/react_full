@@ -65,7 +65,7 @@ router.get("/findOne/:id", (req, res) => {
         description: 'teacher id',
         required: true
     } */
-
+    console.log(req.params)
     db.sequelize.models.teachers.findOne({ where: { teacher_id: req.params.id } })
         .then(oneTeacher => {
             if (!oneTeacher) {

@@ -9,12 +9,12 @@ axios.defaults.baseURL = "http://localhost:8080";
 
 // defining the initialstate
 const initialState = {
+  teacher_id: "",
   first_name: "",
   last_name: "",
   email: "",
   password: "",
   department_id: "",
-  teacher_id:"",
 };
 
 
@@ -23,18 +23,18 @@ export const CreateTeacher = () => {
 // defining the state 
     const [state, setState] = useState(initialState);
 // destructuring the feilds from state (to avoid writting ex. state.first_name)
-    const { first_name, last_name, email, password, department_id } = state
+    const { first_name, last_name, email, password, department_id }=state
 
   
 
 // storing the reference of the useHistory in to history variable
     const navigate = useNavigate();
-  const id = useParams();
+    const teacher_id = useParams();
 
 
     useEffect(() => {
       axios
-        .get(`/findOne/${teacher_id}`)
+        .get(`/api/teachers/findOne/${teacher_id}`)
         .then((response) => setState({ ...response.data[0] }));
     }, [teacher_id]);
     
@@ -46,7 +46,7 @@ export const CreateTeacher = () => {
         if(!first_name || !last_name || !email || !password|| !department_id) {
             toast.error("Please provide value into each input field");
         } else {
-          if(!id)
+          if(!teacher_id)
             // id not id meaning adding a teacher
                await axios
                  .post("/api/teachers/create", {
@@ -153,7 +153,7 @@ export const CreateTeacher = () => {
         />
         <input
           type="submit"
-          value={id ? "Update" : "Save"}
+          value={teacher_id ? "Update" : "Save"}
           style={{ width: "50%" }}
           onClick={handleSubmit}
         />

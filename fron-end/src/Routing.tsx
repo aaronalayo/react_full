@@ -14,7 +14,8 @@ import { AddUpdate } from "./pages/AddUpdate";
 import { ToastContainer } from 'react-toastify';
 
 import { GetList } from "./pages/TeacherList";
-import { CreateTeacher} from "./pages/AddTeacher";
+import { CreateTeacher } from "./pages/AddTeacher";
+import {GetSingleTeacher} from "./pages/singleTeacher";
 
 
 export const Routing = () => {
@@ -45,6 +46,7 @@ export const Routing = () => {
              
                 <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
                 <Route path="/teachers" element={<GetList />}> </Route>
+                <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
                  
             </Routes>
             
