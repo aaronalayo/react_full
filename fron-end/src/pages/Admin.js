@@ -28,26 +28,30 @@ export const Admin = () => {
   };
   console.log(data);
     
-  //   const deleteTeacher = (id) => {
-  //       if (window.confirm("Please Confirm Deletation !")) {
-  //           axios.delete(`/api/teachers/delete/${id}`);
-  //           toast.success("Teacher is deleted Successfully !")
-  //           //load the updated data
-  //           setTimeout(() => loadData(), 500); //load the data after 500 ms
-  //       }
-  // }
+    const deleteTeacher = (id) => {
+      if (window.confirm("Please Confirm Deletation !" + id)) {
+        id = 21;
+        axios.delete(`/api/teachers/delete/${id}`);
+        toast.success("Teacher is deleted Successfully !" + id);
+            //load the updated data
+            setTimeout(() => loadData(), 500); //load the data after 500 ms
+        }
+  }
 
-  // delete one teacher
-  const  id  = useParams();
-  const deleteTeacher = async (id) => {
-    if (window.confirm("Please Confirm Deletation !")) {
-      const response = await axios.delete(`/api/teachers/delete/${id}`);
-      if (response.status === 200) {
-        toast.success(response.data);
-        loadData();
-      }
-    }   
-  };
+  // // delete one teacher
+  // const id = useParams();
+  // const deleteTeacher = async (id) => {
+  //   if (window.confirm("Please Confirm Deletation !"+ id)) {
+  //     const response = await axios.delete(`/api/teachers/delete/${id}`);
+  //     console.log(response.status);
+  //     if (response.status === 200) {
+  //       toast.success(response.data);
+  //       loadData();
+  //     }     
+
+  //   } 
+    
+  // };
  
   const [state, setState] = useState("");
   const getSingleTeacher = async (id) => {
@@ -65,46 +69,53 @@ export const Admin = () => {
         <h2>Welcome to Roll call admin Overview page</h2>
         <br></br> <br></br>
         <Link to="/addTeacher">
-          <button type="submit" classNa
-            me="btn btn-secondary" onClick={Link}>
+          <button type="submit" className="btn btn-secondary" onClick={Link}>
             Add Teacher
           </button>
         </Link>
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Department Id</th>
-            </tr>
-            <tbody>
-              {data && data.map((item, index) => {
+        <table>
+          <tr>
+            <th>Teacher Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Department Id</th>
+            <th>Action</th>
+          </tr>
+          <tbody>
+            {data &&
+              data.map((teachers, teacher_id) => {
                 return (
-                  <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{item.first_name}</td>
-                    <td>{item.last_name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.department_id}</td>
+                  <tr key={teacher_id}>
+                    
+                    <td>{teachers.teacher_id}</td>
+                    <td>{teachers.first_name}</td>
+                    <td>{teachers.last_name}</td>
+                    <td>{teachers.email}</td>
+                    <td>{teachers.department_id}</td>
                     <td>
-                      <Link to={`/update/${item.id}`}>
-                        <button className="btn btn-edit"
-                          onClick={() => getSingleTeacher(item.id)}>Update</button>
+                      <Link to={`/teachers/update/${teacher_id}`}>
+                        <button
+                          className="btn btn-edit"
+                          onClick={() => getSingleTeacher(teacher_id)}
+                        >
+                          Update
+                        </button>
                       </Link>
                       <button
                         className="btn btn-delete"
-                        onClick={() => deleteTeacher(item.id)}
-                      >Delete</button>
-                      <Link to={`/view/${item.id}`}>
+                        onClick={() => deleteTeacher(teacher_id)}
+                      >
+                        Delete
+                      </button>
+                      <Link to={`/view/${teacher_id}`}>
                         <button className="btn btn-view">View</button>
                       </Link>
                     </td>
                   </tr>
                 );
               })}
-            </tbody>
-          </thead>
+          </tbody>
         </table>
       </div>
     );

@@ -40,8 +40,6 @@ export const AddUpdate = () => {
   }, [id]);
 
   
-  
-  
     
 // handling default behaviour of browser
 
@@ -171,7 +169,8 @@ export const AddUpdate = () => {
           <input
             type="submit"
             value={id ? "Update" : "Save"}
-            style={{ width: "100%" }}
+            style={{ width: "50%" }}
+            onClick={handleSubmit}
           />
           <Link to="/admin_overview">
             <input type="button" value="Go back" onClick={Link} />

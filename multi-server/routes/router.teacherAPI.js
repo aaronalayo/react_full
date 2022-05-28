@@ -22,16 +22,17 @@ router.post("/create", (req, res) => {
             "department_id": 2
         }
     } */
-
+    console.log(req.body)
     try {
-        db.sequelize.models.teachers.create({
-
+        db.sequelize.models.teachers
+          .create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password,
-            department_id: req.body.department_id
-        }).then(newTeacher => res.send(newTeacher));
+            department_id: req.body.department_id,
+          })
+          .then((newTeacher) => res.status(200).json({ newTeacher }));
     }
     catch (error) {
         res.status(501).send(error);

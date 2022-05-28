@@ -1,42 +1,6 @@
-
-.styled-table {
-    border-collapse: collapse ;
-    margin: auto;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    max-width: 800px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-
-}
-
-.styled-table thead tr {
-    background-color: rgb(200, 202, 202);
-    counter-reset: #ffffff;
-    text-align:  left;
-
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr{
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-last-of-type(even){
-    background-color: #f3f3f3;
-
-}
-
-.styled-table tbody:last-of-type{
-    border-bottom:  2px soild #fdffff;
-}
-
-.btn{
+.btn {
     border: none;
-    color: white;
+    color: rgb(21, 16, 16);
     padding: 5px 8px;
     text-align: center;
     text-decoration: none;
@@ -45,24 +9,51 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    background-color: rgb(198, 243, 201);
 }
 
-.btn-edit{
+button.type.button:hover {
+    background-color: #a1dea1;
+}
+
+.btn-edit {
     background-color: rgb(90, 219, 131);
 }
+
 .btn-delete {
     background-color: red;
 }
 
 .btn-view {
-    background-color: rgb(116, 114, 114);
+    background-color: rgb(212, 253, 199);
     color: black;
 }
-.btn-secondary{
-    background-color: rgb(182, 182, 182);
-    margin-bottom: 10px;
+
+
+table{
+    
+        align-self: center;
+    }
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+}
+table th{
+    background-color: rgb(235, 239, 238);
 }
 
-.btn-secondary:hover {
-    background-color: #2d2e2d;
+.Details{
+    display: inline-table;
+    align-items: center;
 }
+.Details table,td,tr{
+    width: 1000px;
+    height: 25px;
+}
+ tr:hover {
+     background-color: #ddd;
+ }
+ tr:nth-child(even) {
+     background-color: #f2f2f2;
+ }

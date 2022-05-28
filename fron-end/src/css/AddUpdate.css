@@ -1,6 +1,7 @@
-input[type="text"],
-input[type="email"],
-input[type="number"],
+
+input.type.text,
+input.type.email,
+input.type.number,
 select{
     width: 100%;
     padding: 12px 20px;
@@ -11,7 +12,7 @@ select{
     box-sizing: border-box;
 }
 
-input[type="button"] {
+input.type.button {
     width: 100%;
     background-color: rgb(182, 182, 182);
     color: white;
@@ -21,7 +22,7 @@ input[type="button"] {
     cursor: pointer;
 }
 
-input [type ="submit"]{
+input.type.submit{
     width:100%;
     background-color:#4caf50;
     color: white;
@@ -33,10 +34,10 @@ input [type ="submit"]{
 
 }
 
-input[type="button"]:hover {
+input.type.button:hover {
     background-color: #2d2e2d;
 }
-input[type="submit"]:hover {
+input.type.submit:hover {
     background-color: #4caf50;
 }
 

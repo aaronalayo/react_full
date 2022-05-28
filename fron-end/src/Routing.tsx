@@ -11,9 +11,10 @@ import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
 import { Admin } from "./pages/Admin";
 import { AddUpdate } from "./pages/AddUpdate";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
-
+import { GetList } from "./pages/TeacherList";
+import { CreateTeacher} from "./pages/AddTeacher";
 
 
 export const Routing = () => {
@@ -37,10 +38,14 @@ export const Routing = () => {
 
                 </Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
+
                 <Route path="/admin_overview" element={<Admin />}></Route>
-                
-                <Route path="/addTeacher" element={<AddUpdate />}> </Route>
-                <Route path="/updateTeacher/:id" element={<AddUpdate/>}> </Route>
+                <Route path="/createone" element={<AddUpdate />}> </Route>
+
+             
+                <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
+                <Route path="/teachers" element={<GetList />}> </Route>
+                 
             </Routes>
             
         </BrowserRouter>
