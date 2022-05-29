@@ -110,6 +110,7 @@ export const CreateStudent = () => {
       <br></br>
       <br></br>
       <h2>Student From</h2>
+      <br></br>
       <input
         type="text"
         id="name"
@@ -153,7 +154,7 @@ export const CreateStudent = () => {
       <input
         type="submit"
         value="Save"
-        style={{ width: "50%" }}
+        style={{ width: "19.5%" }}
         onClick={handleSubmit}
       />
       <Link to="/students">

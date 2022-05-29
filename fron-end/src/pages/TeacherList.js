@@ -47,8 +47,8 @@ export const GetTeacherList = () => {
      <Navbar/>
       <div className="Details">
         <br></br>
-        <h2>Welcome to Roll call admin Overview page</h2>
-        <br></br> <br></br>
+        <h2>Teachers List</h2>
+        <br></br>
         {/* <Link to="/addTeacher">
           <button type="submit" className="btn btn-secondary" onClick={Link}>
             Add Teacher

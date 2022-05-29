@@ -16,6 +16,7 @@ const initialState = {
 };
 
 export const GetStudentList = () => {
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -41,11 +42,11 @@ export const GetStudentList = () => {
       <Navbar />
       <div className="Details">
         <br></br>
-        <h2>Welcome to Roll call admin Overview page</h2>
-        <br></br> <br></br>
-        {/* <Link to="/addTeacher">
+        <h2>Students List</h2>
+        <br></br>
+        {/* <Link to="/addStudent">
           <button type="submit" className="btn btn-secondary" onClick={Link}>
-            Add Teacher
+            Add Student
           </button>
         </Link> */}
         <table responsive>
@@ -68,11 +69,11 @@ export const GetStudentList = () => {
                     <td>{students.user_name}</td>
                     <td>{students.program_id}</td>
                     <td>
-                      <button
+                      {/* <button
                         className="btn btn-edit"
                         onClick={navigate(`/students/updateOne/${student_id}`)}
-                      >View </button>
-                      <button
+                      >View </button> */}
+                      <button className="edit"
                         onClick={() =>
                           handleEditButtonClick(students.student_id)
                         }

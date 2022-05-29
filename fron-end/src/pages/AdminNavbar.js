@@ -27,7 +27,11 @@ export const Navbar = () => {
               <Link to="/students">See Student List</Link>
             </li>
             <li>
-              <Link to="/logout" component={Logout}>Logout</Link>
+              <Link to="/login" onClick={Link} component={Logout}>
+                Logout
+              </Link>
+
+              
             </li>
           </ul>
         </div>

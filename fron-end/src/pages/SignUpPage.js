@@ -54,41 +54,49 @@ export const SignUpPage = () => {
             }
         });
     }
-          return (
-              <div className="content-container">
-            <Navbar></Navbar>
-            <h1>Sign Up</h1>
-            {errorMessage && <div className="fail">{errorMessage}</div>}
-            {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
-            <input
-                value={emailValue}
-                onChange={e => setEmailValue(e.target.value)}
-                placeholder="someone@gmail.com"/>
-                 <input 
-                type="password"
-                value={activationCodeValue}
-                onChange={e => setActivationCodeValue(e.target.value)}
-                placeholder="activation code"/>
-            <input 
-                type="password"
-                value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
-                placeholder="password"/>
-            <input 
-                type="password"
-                value={confirmPasswordValue}
-                onChange={e => setconfirmPasswordValue(e.target.value)}
-                placeholder="password"/>
-               
-                <hr />
-            <button
-                disabled={
-                    !emailValue || !passwordValue ||
-                    passwordValue !== confirmPasswordValue
-                } 
-                onClick={onSignUpClicked}>Sign Up</button>
-            <button onClick={login}>Already have an account? Log In</button>
+    return (
+      <div> <Navbar/>
+        <div className="content-container">
+          <h1>Sign Up</h1>
+          {errorMessage && <div className="fail">{errorMessage}</div>}
+          {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
+          <input
+            value={emailValue}
+            onChange={(e) => setEmailValue(e.target.value)}
+            placeholder="someone@gmail.com"
+          />
+          <input
+            type="password"
+            value={activationCodeValue}
+            onChange={(e) => setActivationCodeValue(e.target.value)}
+            placeholder="activation code"
+          />
+          <input
+            type="password"
+            value={passwordValue}
+            onChange={(e) => setPasswordValue(e.target.value)}
+            placeholder="password"
+          />
+          <input
+            type="password"
+            value={confirmPasswordValue}
+            onChange={(e) => setconfirmPasswordValue(e.target.value)}
+            placeholder="password"
+          />
 
+          <hr />
+          <button
+            disabled={
+              !emailValue ||
+              !passwordValue ||
+              passwordValue !== confirmPasswordValue
+            }
+            onClick={onSignUpClicked}
+          >
+            Sign Up
+          </button>
+          <button onClick={login}>Already have an account? Log In</button>
         </div>
-    )
+      </div>
+    );
 }

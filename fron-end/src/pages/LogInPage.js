@@ -4,6 +4,7 @@ import { useNavigate  } from 'react-router-dom';
 import { useToken } from "../auth/useToken";
 import { useQueryParams } from "../util/useQueryParams";
 import { Navbar } from "./CommonNavbar";
+import "../css/login.css"
 
 
 axios.defaults.baseURL = 'http://localhost:8080';

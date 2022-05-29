@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Select from 'react-select';
+//import Select from 'react-select';
 
 
 
@@ -19,7 +19,7 @@ export const Checkin =()=>  {
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
-                            <Select options={subjects} />
+                        
                         </div>
                         <div className="col-md-4"></div>
                     </div>

@@ -19,7 +19,7 @@ import { GetSingleTeacher } from "./pages/singleTeacher";
 import { CreateStudent } from "./pages/AddStudent";
 import { UpdateStudent } from "./pages/UpdateStudent";
 import { AdminPage } from "./pages/AdminPage";
-import {Checkin} from "./pages/StudentCheckIn"
+import { About } from "./pages/about";
 
 
 
@@ -33,27 +33,24 @@ export const Routing = () => {
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
-                <Route path="/login" element={<LogInPage />}>
-                </Route>
-                <Route path="/reset-password/:passwordResetCode"
-                    element={<PasswordResetLandingPage />}>
-                </Route>
+                <Route path="/login" element={<LogInPage />}></Route>
+                <Route path="/reset-password/:passwordResetCode"element={<PasswordResetLandingPage />}></Route>
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
-                <Route path="/signup"
-                    element={<SignUpPage />}>
-                </Route>
+                <Route path="/signup"element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
                 <Route path="/createone" element={<AddUpdate />}> </Route>
+
                 <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
+
                 <Route path="/teachers" element={<GetTeacherList />}> </Route>
+
                 <Route path="/students" element={<GetStudentList />}> </Route>
+
                 <Route path="/addStudent" element={<CreateStudent />}> </Route>
-                <Route path="/checking" element={<Checkin />}> </Route>
-                
+
                 <Route path="/updateStudent" element={<UpdateStudent />}> </Route>
                 <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
-                
-                 
+                <Route path="/about"element={<About />}></Route>
             </Routes>
             
         </BrowserRouter>

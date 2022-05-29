@@ -14,7 +14,9 @@ box-sizing: border-box;
 }
 
 .logo{
-    font-weight: 800;
+    font-weight: 1000px;
+    font-family: Helvetica;
+        
 }
 .menu{
     list-style: none;
@@ -26,5 +28,5 @@ box-sizing: border-box;
     margin: 0 1em;
 }
 a:active {
-    background-color: yellow;
+    background-color: rgb(23, 197, 90);
 }
