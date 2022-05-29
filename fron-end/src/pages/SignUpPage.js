@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate  } from 'react-router-dom';
 import { useToken } from "../auth/useToken";
 import axios from 'axios';
+import { Navbar } from "./CommonNavbar";
 
 
 export const SignUpPage = () => {
@@ -54,7 +55,8 @@ export const SignUpPage = () => {
         });
     }
           return (
-        <div className="content-container">
+              <div className="content-container">
+            <Navbar></Navbar>
             <h1>Sign Up</h1>
             {errorMessage && <div className="fail">{errorMessage}</div>}
             {showErrorMessage && <div className="fail">{showErrorMessage}</div>}

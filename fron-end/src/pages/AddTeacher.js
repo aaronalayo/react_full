@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import "../css/addTeacher.css";
+import "../css/AddTeacher.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Navbar } from "./AdminNavbar";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -110,7 +111,13 @@ export const CreateTeacher = () => {
         setState({ ...state, [name]: value });
     }
     return (
-      <div style={{ marginTop: "100px" }}>
+      <div>
+        <Navbar />
+        <br></br>
+        <br></br>
+        <h2>
+          Teacher From
+        </h2>
         <input
           type="text"
           id="name"

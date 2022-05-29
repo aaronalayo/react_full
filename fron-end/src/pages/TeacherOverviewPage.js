@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useToken } from "../auth/useToken";
 import { useUser } from "../auth/useUser";
+import { Navbar } from "./TeacherNavbar";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -15,6 +16,7 @@ export const TeacherOverviewPage = () => {
   const [subjectIdValue, setSubjectIdValue ] = useState('');
   const [semesterValue, setSemesterValue ] = useState('');
   const [subjectName, setSubjectName] = useState('');
+
 
   useEffect(() => {
       axios
@@ -75,6 +77,7 @@ export const TeacherOverviewPage = () => {
 
   return (
     <div className="content-container">
+      <Navbar/>
       <h2>Create Check-in Passphrase</h2>
       {showSuccessMessage && (
         <div className="success">{showSuccessMessage}</div>

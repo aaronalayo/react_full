@@ -1,50 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Admin.css";
 import axios from "axios";
 import { Navbar } from "./AdminNavbar";
 
-
 axios.defaults.baseURL = "http://localhost:8080";
 
 const initialState = {
-  teacher_id:"",
+  student_id: "",
   first_name: "",
   last_name: "",
-  email: "",
+  user_name: "",
   password: "",
-  department_id: "",
+  program_id: "",
 };
 
-
-
-export const GetTeacherList = () => {
-  
+export const GetStudentList = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     loadData();
   }, []);
-  
+
   const navigate = useNavigate();
-  
-  // get all teachers list
+
+  // get all students list
   const loadData = async () => {
-    const response = await axios.get("/api/teachers/all");
+    const response = await axios.get("/api/students/all");
     if (response.status === 200) {
       setData(response.data);
     }
   };
   console.log(data);
 
-
-  const handleEditButtonClick = (teacher_id) =>
-      navigate(`/api/teachers/updateOne/${teacher_id}`);
-
+  const handleEditButtonClick = (student_id) =>
+    navigate(`/api/students/update/${student_id}`);
 
   return (
     <div style={{ marginTop: "15px" }}>
-     <Navbar/>
+      <Navbar />
       <div className="Details">
         <br></br>
         <h2>Welcome to Roll call admin Overview page</h2>
@@ -56,31 +50,31 @@ export const GetTeacherList = () => {
         </Link> */}
         <table responsive>
           <tr>
-            <th>Teacher Id</th>
+            <th>Student Id</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
-            <th>Department Id</th>
+            <th>User Name</th>
+            <th>Program Id</th>
             <th>Action</th>
           </tr>
           <tbody>
             {data &&
-              data.map((teachers, teacher_id) => {
+              data.map((students, student_id) => {
                 return (
-                  <tr key={teachers.teacher_id}>
-                    <td>{teachers.teacher_id}</td>
-                    <td>{teachers.first_name}</td>
-                    <td>{teachers.last_name}</td>
-                    <td>{teachers.email}</td>
-                    <td>{teachers.department_id}</td>
+                  <tr key={students.student_id}>
+                    <td>{students.student_id}</td>
+                    <td>{students.first_name}</td>
+                    <td>{students.last_name}</td>
+                    <td>{students.user_name}</td>
+                    <td>{students.program_id}</td>
                     <td>
-                      {/* <button
+                      <button
                         className="btn btn-edit"
-                        onClick={navigate(`/teachers/updateOne/${teacher_id}`)}
-                      >View </button> */}
+                        onClick={navigate(`/students/updateOne/${student_id}`)}
+                      >View </button>
                       <button
                         onClick={() =>
-                          handleEditButtonClick(teachers.teacher_id)
+                          handleEditButtonClick(students.student_id)
                         }
                       >
                         Edit
@@ -94,4 +88,4 @@ export const GetTeacherList = () => {
       </div>
     </div>
   );
-}
+};
