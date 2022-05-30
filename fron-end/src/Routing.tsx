@@ -10,7 +10,6 @@ import { PrivateRoute } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
 import { Admin } from "./pages/Admin";
-import { AddUpdate } from "./pages/AddUpdate";
 import { ToastContainer } from 'react-toastify';
 import { GetTeacherList } from "./pages/TeacherList";
 import { GetStudentList } from "./pages/StudentList";
@@ -20,12 +19,15 @@ import { CreateStudent } from "./pages/AddStudent";
 import { UpdateStudent } from "./pages/UpdateStudent";
 import { AdminPage } from "./pages/AdminPage";
 import { About } from "./pages/about";
+import { Navbar } from "./pages/StudentNavbar";
+
 
 
 
 export const Routing = () => {
     return (
         <BrowserRouter>
+            <Navbar/>
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
                 <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
@@ -38,8 +40,6 @@ export const Routing = () => {
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
                 <Route path="/signup"element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
-                <Route path="/createone" element={<AddUpdate />}> </Route>
-
                 <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
 
                 <Route path="/teachers" element={<GetTeacherList />}> </Route>

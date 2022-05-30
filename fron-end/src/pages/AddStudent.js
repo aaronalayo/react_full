@@ -29,12 +29,6 @@ export const CreateStudent = () => {
   const navigate = useNavigate();
   const student_id = useParams();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/students/findOne/${student_id}`)
-  //     .then((response) => setState({ ...response.data[0] }));
-  // }, [student_id]);
-
   // handling default behaviour of browser
 
   const handleSubmit = async (e) => {
@@ -68,34 +62,7 @@ export const CreateStudent = () => {
             // catching the error and read from the api
           })
           .catch((err) => toast.error(err.response.data));
-  //     else {
-  //       // else updateing
-  //       await axios
-  //         .patch(`api/students/updateOne/${student_id}`, {
-  //           //path the body
-  //           first_name: first_name,
-  //           last_name: last_name,
-  //           user_name: user_name,
-  //           password: password,
-  //           program_id: program_id,
-  //         })
-  //         .then(() => {
-  //           // when user is succssfull to add the contain empty the field again
-  //           setState({
-  //             student_id: "",
-  //             first_name: "",
-  //             last_name: "",
-  //             user_name: "",
-  //             password: "",
-  //             program_id: "",
-  //           });
-  //           // catching the error and read from the api
-  //         })
-  //         .catch((err) => toast.error(err.response.data));
-  //       toast.error("Can not add !");
-  //     }
-
-  //     setTimeout(() => navigate("/students"), 500); 
+  
     }
    };
   //handling input change (e = event)

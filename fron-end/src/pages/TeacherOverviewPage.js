@@ -76,42 +76,43 @@ export const TeacherOverviewPage = () => {
   };
 
   return (
-    <div className="content-container">
-      <Navbar/>
-      <h2>Create Check-in Passphrase</h2>
-      {showSuccessMessage && (
-        <div className="success">{showSuccessMessage}</div>
-      )}
-      {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
+    <div> <Navbar></Navbar>
+      <div className="content-container">
+        <h2>Create Check-in Passphrase</h2>
+        {showSuccessMessage && (
+          <div className="success">{showSuccessMessage}</div>
+        )}
+        {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
 
-      <h2>Welcome Teacher</h2>
-      <div>
-        <Dropdown
-          label="Select Semester and Subject"
-          options={options}
-          value={selected}
-        />
-      </div>
-      <br />
-      {/* <input type="hidden" id="selectedSemester" name="semester" required />
+        <h2>Welcome Teacher</h2>
+        <div>
+          <Dropdown
+            label="Select Semester and Subject"
+            options={options}
+            value={selected}
+          />
+        </div>
+        <br />
+        {/* <input type="hidden" id="selectedSemester" name="semester" required />
       <input type="hidden" id="selectedSubjectID" name="subject_id" required /> */}
-      <input
-        type="text"
-        
-        name="passphrase"
-        id="passphrase_input"
-        placeholder="Passphrase"
-        onChange={e => setPassPhraseValue(e.target.value)}
-       
-        required
-        
-      />
-      <br />
-      <button
-        disabled={!passPhraseValue || !selected} 
-        type="submit" 
-        id="submit-passphrase-button"
-        onClick={onGenerateClicked}>Generate</button>
+        <input
+          type="text"
+          name="passphrase"
+          id="passphrase_input"
+          placeholder="Passphrase"
+          onChange={(e) => setPassPhraseValue(e.target.value)}
+          required
+        />
+        <br />
+        <button
+          disabled={!passPhraseValue || !selected}
+          type="submit"
+          id="submit-passphrase-button"
+          onClick={onGenerateClicked}
+        >
+          Generate
+        </button>
+      </div>
     </div>
   );
 };
