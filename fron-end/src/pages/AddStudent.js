@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import "../css/AddTeacher.css";
+import "../css/addTeacher.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navbar } from "./AdminNavbar";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -73,7 +72,6 @@ export const CreateStudent = () => {
   };
   return (
     <div>
-      <Navbar />
       <br></br>
       <br></br>
       <h2>Student From</h2>

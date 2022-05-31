@@ -1,32 +1,32 @@
-*{
-margin:0;
-padding: 0;
-box-sizing: border-box;
-}
-
-.navbar{
+.navbar {
+    padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1em 2em;
-    color: rgb(255, 255, 255);
-    background-color: rgb(10, 10, 10);
+    max-width: 600px;
+    margin: 0 auto;
+    border-bottom: 1px solid #f2f2f2;
 }
 
-.logo{
-    font-weight: 1000px;
-    font-family: Helvetica;
-        
+.navbar h1 {
+    color: green;
 }
-.menu{
-    list-style: none;
-    display: flex;   
+
+.navbar .links {
+    margin-left: auto;
 }
-.menu a{
-    color:aliceblue;
+
+.navbar a {
+    margin-left: 16px;
     text-decoration: none;
-    margin: 0 1em;
+    padding: 6px;
 }
-a:active {
-    background-color: rgb(23, 197, 90);
+
+.navbar a:hover {
+    color: green;
+}
+
+.content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
 }

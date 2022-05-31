@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* * {
+  box-sizing: border-box;
+} */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 
 h1 {
@@ -22,7 +28,9 @@ hr {
 }
 
 
-button, input, select {
+button,
+input,
+select {
     border-radius: 8px;
     box-sizing: border-box;
     display: block;
@@ -36,6 +44,7 @@ input {
     border: 1px solid black;
     size: 2em;
 }
+
 select {
     border: 1px solid black;
     size: 2em;
@@ -47,21 +56,24 @@ button {
 }
 
 .page-container {
-    display: flex;
-    background-color: #ddd;
-    min-height: 100vh;
+    display: block;
+    /* background-color: #ddd; */
+    min-height: 100%;
     min-width: 100%;
     align-items: center;
     justify-content: center;
 }
 
 .content-container {
-    background-color: white;
-    border-radius: 8px;
+    margin-top: 30px;
+    content: center;
+    /* border: 2px solid rgb(178, 180, 178); */
     min-width: 300px;
-    max-width: 800px;
-    padding: 32px;
+    /* max-width: 500px; */
+    min-height: 300px;
+    border-radius: 8px;
     margin: auto;
+
 }
 
 .success {
@@ -80,4 +92,71 @@ button {
     padding: 16px;
     text-align: center;
     width: 50%;
+}
+
+/* Navbar css */
+
+.navbar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar h1 {
+    color: green;
+}
+
+.navbar .links {
+    margin-left: auto;
+}
+
+.navbar a {
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
+}
+
+.navbar a:hover {
+    color: green;
+}
+
+.content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* About us  */
+
+.about-us h2 {
+    font-size: 20px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+/* Login */
+
+/* body {
+    min-height: 100vh;
+    display: flex;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
+} */
+
+.auth-content-container {
+    padding-top: 8%;
+    content: center;
+    min-width: 300px;
+    max-width: 500px;
+    max-height: 300px;
+    border-radius: 8px;
+    margin: auto;
+
+}
+
+.auth-label {
+    font-size: large;
 }

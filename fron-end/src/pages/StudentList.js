@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/Admin.css";
+// import "../css/Admin.css";
 import axios from "axios";
-import { Navbar } from "./AdminNavbar";
+
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -39,7 +39,6 @@ export const GetStudentList = () => {
 
   return (
     <div style={{ marginTop: "15px" }}>
-      <Navbar />
       <div className="Details">
         <br></br>
         <h2>Students List</h2>

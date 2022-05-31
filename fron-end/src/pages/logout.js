@@ -1,29 +1,23 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useEffect } from "react";
 
+export const Logout = () => {
 
-class Logout extends Component {
-  constructor(props) {
-    super(props);
+  const token = JSON.parse(localStorage.getItem('token'))
+  console.log(token)
 
-    this.handleLogout = this.handleLogout.bind(this);
-  }
+  useEffect(() => {
+    console.log('This got triggered')
+    localStorage.clear();
+    // window.location.href('/')
+  },[]);
 
-  handleLogout() {
-    sessionStorage.clear();
-    this.props.logOutHandler();
-    //window.location.replace('/login');
-  }
+return (
+    <div>
+      <h2>You are logged out!</h2>
+      
+    </div>
+  );
 
-  render() {
-    return (
-      <div>
-        <h1>You are logged out!</h1>
-       
-      </div>
-    );
-  }
 }
 
-
-        export default Logout;
+export default Logout;

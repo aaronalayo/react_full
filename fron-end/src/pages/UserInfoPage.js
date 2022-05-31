@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';  // to send asynchronous HTTP requests to REST endpoints
 import { useToken } from '../auth/useToken';
 import { useUser } from '../auth/useUser';
@@ -7,16 +7,16 @@ axios.defaults.baseURL = 'http://localhost:8080';
 
 export const UserInfoPage = () => {
     const user = useUser();
-    const [ token, setToken] = useToken();
+    const [token, setToken] = useToken();
 
-    const { id, email, isVerified, info} = user;
+    const { id, email, isVerified, info } = user;
 
     // We'll use the history to navigate the user
     // programmatically later on (we're not using it yet)
     const navigate = useNavigate();
     function login() {
-        navigate( '/login')
-      }
+        navigate('/login')
+    }
 
     // These states are bound to the values of the text inputs
     // on the page (see JSX below). 
@@ -49,14 +49,14 @@ export const UserInfoPage = () => {
                 hairColor,
                 bio,
             }, {
-                headers: {Authorization: `Bearer ${token}`}
+                headers: { Authorization: `Bearer ${token}` }
             }).then((response) => {
-                const {token: newToken } = response.data;
+                const { token: newToken } = response.data;
                 setToken(newToken);
                 setShowSuccessMessage(true);
             });
-            
-           
+
+
         } catch (error) {
             setShowErrorMessage(true)
         }
@@ -66,13 +66,13 @@ export const UserInfoPage = () => {
         localStorage.removeItem('token');
         login();
     }
-    
+
     const resetValues = () => {
         setFavoriteFood(info.favoriteFood);
         setHairColor(info.hairColor);
         setBio(info.bio);
     }
-    
+
     // And here we have the JSX for our component. It's pretty straightforward
     return (
         <div className="content-container">

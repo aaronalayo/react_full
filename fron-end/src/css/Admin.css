@@ -1,15 +1,4 @@
-button {
-    border: none;
-    color: rgb(21, 16, 16);
-    padding: 5px 8px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 4px 2px;
-    
-    background-color: rgb(198, 243, 201);
-}
+
 
 button:hover {
     background-color: rgb(178, 239, 178)
@@ -54,7 +43,7 @@ table th{
      margin-top: 50px ;
  }
 /*  About box style */
- p {
+ /* p {
      font-size: 150%;
      content: center;
      background-color: rgb(253, 253, 253);
@@ -63,11 +52,5 @@ table th{
      padding: 50px;
      box-shadow: 10px 10px 5px rgb(35, 35, 35);
      margin-left: 310px;
- }
+ } */
 
- .content-container{
-    margin-top: 30px;
-    content: center;
-    border: 15px solid rgb(178, 180, 178);
-    width: 600px;
- }
