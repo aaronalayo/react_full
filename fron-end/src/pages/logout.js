@@ -1,15 +1,33 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Logout = () => {
 
-  const token = JSON.parse(localStorage.getItem('token'))
-  console.log(token)
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log('This got triggered')
-    localStorage.clear();
-    // window.location.href('/')
-  },[]);
+    useEffect(() => {
+      const token = localStorage.getItem('token')
+      console.log(token)
+
+      if (token === null) {
+        console.log('Not logged in')
+        navigate('/login')
+      } else {
+        console.log('Logging out now ... ')
+        localStorage.clear();
+        // Navigate('/')
+      }
+  })
+
+  // const token = JSON.parse(localStorage.getItem('token'))
+  // console.log(token)
+
+  // useEffect(() => {
+    // console.log('This got triggered')
+    // localStorage.clear();
+    // Navigate('/login')
+    
+  // });
 
 return (
     <div>

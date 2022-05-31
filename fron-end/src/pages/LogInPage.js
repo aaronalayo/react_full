@@ -19,6 +19,8 @@ export const LogInPage = () => {
   const { token: oauthToken } = useQueryParams();
 
   const navigate = useNavigate();
+
+
   // function home() {
   //   navigate('/')
   // };
@@ -48,6 +50,7 @@ export const LogInPage = () => {
   //   loadOauthUrl();
   // }, [])
 
+
   useEffect(() => {
     if (showErrorMessage) {
       setTimeout(() => {
@@ -55,24 +58,6 @@ export const LogInPage = () => {
       }, 3000);
     }
   }, [showErrorMessage]);
-
-  // function forgotpassword() {
-  //   navigate('/forgot-password')
-  // };
-  // function signup() {
-  //   navigate('/signup')
-  // };
-  // function teacherOverview() {
-  //   navigate('/teacher_overview')
-  // }
-
-  // const testClick = () => {
-  //   console.log('Clicked me..')
-  // }
-
-  // const { token } = useParams();
-  // console.log(JSON.stringify(token));
-  
   
       const onLogInClicked = async () => {
         
@@ -95,10 +80,6 @@ export const LogInPage = () => {
             } else if (role === 'student') {
               navigate('/student_overview')
             }
-            // console.log(res.data.token)
-            // console.log(res.data)
-            // const tokens = JSON.parse(localStorage.getItem('token'))
-            // console.log(tokens)
 
             // navigate('/teacher_overview');
         }).catch(err => {
