@@ -1,34 +1,23 @@
-.btn {
+button {
     border: none;
     color: rgb(21, 16, 16);
     padding: 5px 8px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     border-radius: 5px;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer;
+    
     background-color: rgb(198, 243, 201);
 }
 
-button.type.button:hover {
-    background-color: #a1dea1;
+button:hover {
+    background-color: rgb(178, 239, 178)
 }
 
-.btn-edit {
-    background-color: #a1dea1;
+button {
+    background-color: rgb(241, 241, 241)
 }
-
-.btn-delete {
-    background-color: red;
-}
-
-.btn-view {
-    background-color: rgb(212, 253, 199);
-    color: black;
-}
-
 
 table{
     
@@ -56,4 +45,29 @@ table th{
  }
  tr:nth-child(even) {
      background-color: #f2f2f2;
+ }
+
+
+ .admin{
+     text-align: center;
+     padding-top: 50px;
+     margin-top: 50px ;
+ }
+/*  About box style */
+ p {
+     font-size: 150%;
+     content: center;
+     background-color: rgb(253, 253, 253);
+     width: 1000px;
+     border: 15px solid rgb(178, 180, 178);
+     padding: 50px;
+     box-shadow: 10px 10px 5px rgb(35, 35, 35);
+     margin-left: 310px;
+ }
+
+ .content-container{
+    margin-top: 30px;
+    content: center;
+    border: 15px solid rgb(178, 180, 178);
+    width: 600px;
  }

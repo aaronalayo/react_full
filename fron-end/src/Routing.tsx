@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route,NavLink,} from "react-router-dom";
 import { EmailVerificationLandingPage } from "./pages/EmailVerificationLandingPage";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
 import { LogInPage } from "./pages/LogInPage";
@@ -10,44 +10,47 @@ import { PrivateRoute } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
 import { Admin } from "./pages/Admin";
-import { AddUpdate } from "./pages/AddUpdate";
 import { ToastContainer } from 'react-toastify';
-
-import { GetList } from "./pages/TeacherList";
+import { GetTeacherList } from "./pages/TeacherList";
+import { GetStudentList } from "./pages/StudentList";
 import { CreateTeacher } from "./pages/AddTeacher";
-import {GetSingleTeacher} from "./pages/singleTeacher";
+import { GetSingleTeacher } from "./pages/singleTeacher";
+import { CreateStudent } from "./pages/AddStudent";
+import { UpdateStudent } from "./pages/UpdateStudent";
+import { AdminPage } from "./pages/AdminPage";
+import { About } from "./pages/about";
+import { Navbar } from "./pages/StudentNavbar";
+
+
 
 
 export const Routing = () => {
     return (
         <BrowserRouter>
+            <Navbar/>
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
-            <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
+                <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
+                <Route path="/admin" element={<AdminPage />}></Route>
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
-                <Route path="/login" element={<LogInPage />}>
-                </Route>
-                <Route path="/reset-password/:passwordResetCode"
-                    element={<PasswordResetLandingPage />}>
-
-                </Route>
+                <Route path="/login" element={<LogInPage />}></Route>
+                <Route path="/reset-password/:passwordResetCode"element={<PasswordResetLandingPage />}></Route>
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
-                <Route path="/signup"
-                    element={<SignUpPage />}>
-
-                </Route>
+                <Route path="/signup"element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
-
-                <Route path="/admin_overview" element={<Admin />}></Route>
-                <Route path="/createone" element={<AddUpdate />}> </Route>
-
-             
                 <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
-                <Route path="/teachers" element={<GetList />}> </Route>
+
+                <Route path="/teachers" element={<GetTeacherList />}> </Route>
+
+                <Route path="/students" element={<GetStudentList />}> </Route>
+
+                <Route path="/addStudent" element={<CreateStudent />}> </Route>
+
+                <Route path="/updateStudent" element={<UpdateStudent />}> </Route>
                 <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
-                 
+                <Route path="/about"element={<About />}></Route>
             </Routes>
             
         </BrowserRouter>

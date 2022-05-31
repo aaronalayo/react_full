@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import "../css/Admin.css";
-import axios  from "axios";
+import axios from "axios";
+import { Navbar } from "./AdminNavbar";
 
 
 axios.defaults.baseURL = "http://localhost:8080";
@@ -17,7 +18,7 @@ const initialState = {
 
 
 
-export const GetList = () => {
+export const GetTeacherList = () => {
   
   const [data, setData] = useState([]);
 
@@ -46,14 +47,16 @@ export const GetList = () => {
 
   return (
     <div style={{ marginTop: "15px" }}>
+     <Navbar/>
       <div className="Details">
-        <h2>Welcome to Roll call admin Overview page</h2>
-        <br></br> <br></br>
-        <Link to="/addTeacher">
+        <br></br>
+        <h2>Teachers List</h2>
+        <br></br>
+        {/* <Link to="/addTeacher">
           <button type="submit" className="btn btn-secondary" onClick={Link}>
             Add Teacher
           </button>
-        </Link>
+        </Link> */}
         <table responsive>
           <tr>
             <th>Teacher Id</th>
