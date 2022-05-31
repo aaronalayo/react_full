@@ -29,16 +29,19 @@ export const GetList = () => {
   
   // get all teachers list
   const loadData = async () => {
-    const response = await axios.get("/api/teachers/all");
-    if (response.status === 200) {
-      setData(response.data);
-    }
+    await axios.get("/api/teachers/all").then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
+        setData(response.data);
+      }
+    })
+    
   };
-  console.log(data);
 
 
-  const handleEditButtonClick = (teacher_id) =>
-      navigate(`/api/teachers/updateOne/${teacher_id}`);
+
+  const handleEditButtonClick = (id) =>
+      navigate(`/teachers/updateOne/${id}`);
 
 
   return (
@@ -62,7 +65,7 @@ export const GetList = () => {
           </tr>
           <tbody>
             {data &&
-              data.map((teachers, teacher_id) => {
+              data.map((teachers) => {
                 return (
                   <tr key={teachers.teacher_id}>
                     <td>{teachers.teacher_id}</td>
@@ -71,10 +74,6 @@ export const GetList = () => {
                     <td>{teachers.email}</td>
                     <td>{teachers.department_id}</td>
                     <td>
-                      {/* <button
-                        className="btn btn-edit"
-                        onClick={navigate(`/teachers/updateOne/${teacher_id}`)}
-                      >View </button> */}
                       <button
                         onClick={() =>
                           handleEditButtonClick(teachers.teacher_id)

@@ -9,7 +9,6 @@ axios.defaults.baseURL = "http://localhost:8080";
 
 // defining the initialstate
 const initialState = {
-  teacher_id: "",
   first_name: "",
   last_name: "",
   email: "",
@@ -22,14 +21,27 @@ export const GetSingleTeacher = () => {
 
     const [state, setState] = useState(initialState);
     const {first_name, last_name, email, password, department_id } = state;
-    
-    const teacher_id = useParams();
-    
- useEffect(() => {
-   axios
-     .get(`/api/teachers/findOne/${teacher_id}`)
-     .then((response) => setState({ ...response.data[0] }));
- }, [teacher_id]);
+    const navigate = useNavigate();
+    const { id } = useParams();
+  
+
+     useEffect(() => {
+      const getOneTeacher = async () => {
+          try {
+            await axios.get(`/api/teachers/findOne/${id}`).then((response) => {
+              console.log(response.data)
+              setState({ ...response.data})
+              })
+          } catch (error) {
+              console.log(error)
+          }
+      }
+      getOneTeacher()
+  }, [id])
+
+  function to_teachers() {
+    navigate( '/teachers')
+  };
     
     
     const handleInputChange = (e) => {
@@ -85,9 +97,8 @@ export const GetSingleTeacher = () => {
                   style={{ width: "50%" }}
                  // onClick={handleSubmit}
                 />
-                <Link to="/teachers">
-                  <input type="button" value="Go back" onClick={Link} />
-                </Link>
+                  <button onClick={to_teachers}>Go back</button>
+  
               </div>
             );
         }

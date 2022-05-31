@@ -72,7 +72,7 @@ router.get("/findOne/:id", (req, res) => {
                 res.status(404).send("Teacher not found")
             }
             else {
-                res.json({ oneTeacher });
+                res.status(200).json({ oneTeacher });
                 //res.send(oneTeacher.toJSON())
             }
         })
