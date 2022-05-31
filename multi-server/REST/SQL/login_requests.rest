@@ -18,5 +18,16 @@ Content-Type: application/json
 
 }
 
+### Login admin
+POST http://localhost:8080/api/login/
+Content-Type: application/json
+
+{
+    "email": "admin@kea.dk", 
+    "password": "admin123"
+
+}
+
+
 ###
 GET http://localhost:8080/api/logout/

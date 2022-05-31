@@ -29,6 +29,17 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`subjects` (
 `program_id` INT NOT NULL);
 
 -- -----------------------------------------------------
+-- Table `rollcall_db`.`admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `rollcall_db`.`admin` (
+`admin_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+`first_name` VARCHAR(20) NOT NULL,
+`last_name` VARCHAR(20) NOT NULL,
+`email` VARCHAR(60) NOT NULL UNIQUE,
+`password` VARCHAR(120) NOT NULL);
+
+
+-- -----------------------------------------------------
 -- Table `rollcall_db`.`teachers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `rollcall_db`.`teachers` (
