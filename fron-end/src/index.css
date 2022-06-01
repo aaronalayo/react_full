@@ -36,9 +36,9 @@ input {
     border: 1px solid black;
     size: 2em;
 }
-select {
-    border: 1px solid black;
-    size: 2em;
+.css-b62m3t-container {
+    width: 50%;
+    margin: auto;
 }
 
 button {

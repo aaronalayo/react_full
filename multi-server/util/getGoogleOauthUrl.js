@@ -1,7 +1,7 @@
 // import { oauthClient } from "./oauthClient";
-const oauthClient = require("./oauthClient");
+const {oauthClient} = require("./oauthClient");
 
-export const getGoogleOauthUrl = () => {
+ const getGoogleOauthUrl = () => {
     const scopes = [
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/userinfo.profile',
@@ -13,3 +13,5 @@ export const getGoogleOauthUrl = () => {
         scope: scopes,
     });
 }
+
+module.exports.getGoogleOauthUrl = getGoogleOauthUrl;

@@ -21,7 +21,7 @@ router.post('/passphrase/mySubjects', authenticateToken('teacher'), function (re
             where: { teacher_id: providedTeacherId },
         }
     ).then((foundTeacherAndSubjects) => {
-        console.log(foundTeacherAndSubjects.forEach(element => console.log(element.toJSON())));
+        // console.log(foundTeacherAndSubjects.forEach(element => console.log(element.toJSON())));
         const list = [];
         foundTeacherAndSubjects.forEach(element => list.push({semester: element.semester, subject_name: element.subject_name, subject_id: element.subject_id}));
         res.send(list);
@@ -77,10 +77,11 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
                 // if null, there was no match
                 if (!foundTeacher) {
                     // so throw custom error
-                    throw {
-                        custom_status: 404,
-                        custom_msg: "Teacher not found"
-                    };
+                    // throw {
+                    //     custom_status: 404,
+                    //     custom_msg: "Teacher not found"
+                    // };
+                    res.status(404).json({ message: "Teacher not found" });
                 }
                 // else keep looking for teacher, this time:
                 // with provided id 
@@ -103,10 +104,12 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
                 // if null, there was no match
                 if (!foundTeacherAndSubject) {
                     // so throw custom error
-                    throw {
-                        custom_status: 404,
-                        custom_msg: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester
-                    };
+                    // throw {
+                    //     custom_status: 404,
+                    //     custom_msg: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester
+                    // };
+                    res.status(404).json({ message: "Teacher with id: " + providedTeacherId + ", is not assigned to subject with id " + providedSubjectId + ", for semester: " + providedSemester });
+                    
                 }
 
                 // else start saving a new presence key
@@ -123,21 +126,25 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
             .then(() => {
                 return t.commit()
             })
-            .then(() => res.send(providedPresenceKey))
+            .then(() =>
+            
+                // console.log("generating" , providedPresenceKey))
+                res.status(200).send(providedPresenceKey))
+             
             .catch(function (err) {
                 t.rollback();
                 let { custom_status, custom_msg } = err
                 if (custom_status, custom_msg) {
-                    res.status(404).send(custom_msg);
+                    res.status(404).json({message: custom_msg});
                     throw err;
                 }
                 if (err.name === 'SequelizeUniqueConstraintError') {
-                    res.status(409).send('Passphrase taken, please choose a different one')
+                    res.status(409).json('Passphrase taken, please choose a different one')
                     throw err;
                 }
                 res.status(500).send('Something went wrong')
                 throw err;
-            });
+            })
     }).catch(err => console.log(err));
 
 })

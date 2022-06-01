@@ -23,6 +23,27 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(120),
       allowNull: false
     },
+    google_id: {
+      type: DataTypes.STRING(120),
+      allowNull: true
+    },
+    is_verified: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 0
+    },
+    verification_string: {
+      type: DataTypes.STRING(120),
+      allowNull: true
+    },
+    oauth_email: {
+      type: DataTypes.STRING(120),
+      allowNull: true
+    },
+    password_reset_code: {
+      type: DataTypes.STRING(120),
+      allowNull: true
+    },
     program_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

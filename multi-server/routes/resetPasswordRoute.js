@@ -1,23 +1,34 @@
-import bcrypt from 'bcrypt';
-import { getDbConnection } from '../db';
+const express = require("express");
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const db = require("../connectors/db.mysql");
 
-export const resetpasswordRoute = {
-    path: '/api/users/:passwordResetCode/reset-password',
-    method: 'put',
-    handler: async (req, res) => {
-        const { passwordResetCode } = req.params;
-        const { passwordValue } = req.body;
-        console.log(passwordValue)
-        const db = getDbConnection('react-auth-db');
+router.put("/users/:passwordResetCode/reset-password", async (req, res) => {
+  const { passwordResetCode } = req.params;
+  const { passwordValue } = req.body;
+  console.log(passwordValue);
 
-        const newPasswordHash = await bcrypt.hash(passwordValue, 10);
-
-        const result = await db.collection('users').findOneAndUpdate({ passwordResetCode }, {$set: { passwordHash: newPasswordHash}, $unset: {passwordResetCode: ''},});
-        const teacher = await db.sequelize.models.teachers.findOne({ where: { email } });
-        if(result.lastErrorObject.n === 0) return res.sendStatus(404);
-
-        res.sendStatus(200);
-
-
+  const newPasswordHash = await bcrypt.hash(passwordValue, 10);
+  const teacher = await db.sequelize.models.teachers.findOne({
+    where: { password_reset_code : passwordResetCode},
+  });
+  if (teacher) {
+   const result = teacher.update({ password: newPasswordHash });
+  } else if (!teacher) {
+    const student = await db.sequelize.models.students.findOne({
+      where: { password_reset_code : passwordResetCode },
+    });
+    if (student) {
+      student.update({ password: newPasswordHash });
+    } else if (!student) {
+      return res.sendStatus(404);
+      
     }
-}
+  } else {
+    res.status(200);
+  }
+});
+
+
+
+module.exports = router;

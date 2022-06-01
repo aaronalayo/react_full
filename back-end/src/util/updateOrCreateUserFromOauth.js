@@ -1,4 +1,3 @@
-import res from "express/lib/response";
 import { getDbConnection } from "../db";
 
 export const updateOrCreateUserFromOauth = async ({ oauthUserInfo }) => {

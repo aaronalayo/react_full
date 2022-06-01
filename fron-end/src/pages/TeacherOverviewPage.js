@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useToken } from "../auth/useToken";
 import { useUser } from "../auth/useUser";
 import { Navbar } from "./TeacherNavbar";
+import Select from 'react-select'
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -10,14 +11,11 @@ export const TeacherOverviewPage = () => {
   const [token] = useToken();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState('');
   const [options, setOptions] = useState([]);
   const [passPhraseValue, setPassPhraseValue] = useState('');
-  const [subjectIdValue, setSubjectIdValue ] = useState('');
-  const [semesterValue, setSemesterValue ] = useState('');
-  const [subjectName, setSubjectName] = useState('');
 
-
+ 
   useEffect(() => {
       axios
         .post(
@@ -42,41 +40,47 @@ export const TeacherOverviewPage = () => {
 
   }, [token]);
   const onGenerateClicked = async () => {
-    console.log(selected.split(' - ')[2])
-    setSubjectIdValue(selected.split(' - ')[0]);
-    setSubjectName(selected.split(' - ')[2]);
-    setSemesterValue(selected.split(' - ')[1]);
-    console.log(subjectIdValue, subjectName)
+
+      await axios.post('/api/passphrase', {
+          subject_id:selected.subject_id,
+          semester:selected.semester,
+          passphrase:passPhraseValue},
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+
+          
+      ).then((response) => {
+        console.log(response.data)
+        setShowSuccessMessage(response.data)
+        // const {token} = response.data;
+        
+      }).catch(function (error) {
+          if (error.response) {
+          setShowErrorMessage(error.response.data)
+            // Request made and server responded
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+      
+          }
+      });
+
   }
 
   useEffect(() => {
-    if (showSuccessMessage || showErrorMessage) {
+    if ( showErrorMessage) {
       setTimeout(() => {
-        setShowSuccessMessage(false);
+        
         setShowErrorMessage(false);
       }, 3000);
+    }else if(showSuccessMessage){
+      setShowSuccessMessage(false)
     }
   }, [showSuccessMessage, showErrorMessage]);
 
-  const Dropdown = ({ label, options }) => {
-    return (
-      <label>
-        {label}
-        <select  onChange={(e) => setSelected(e.target.value || null)}
-        value={selected || ""}>
-        {options.map((option) =>
-         
-       <option key={option.subject_id} value={option.subject_id}>
-      {option.subject_id } - {option.semester} - {option.subject_name}
-       </option>
-      )}
-        </select>
-      </label>
-    );
-  };
-
   return (
-    <div> <Navbar></Navbar>
+    
       <div className="content-container">
         <h2>Create Check-in Passphrase</h2>
         {showSuccessMessage && (
@@ -84,35 +88,42 @@ export const TeacherOverviewPage = () => {
         )}
         {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
 
-        <h2>Welcome Teacher</h2>
-        <div>
-          <Dropdown
-            label="Select Semester and Subject"
-            options={options}
-            value={selected}
-          />
-        </div>
-        <br />
-        {/* <input type="hidden" id="selectedSemester" name="semester" required />
-      <input type="hidden" id="selectedSubjectID" name="subject_id" required /> */}
-        <input
-          type="text"
-          name="passphrase"
-          id="passphrase_input"
-          placeholder="Passphrase"
-          onChange={(e) => setPassPhraseValue(e.target.value)}
-          required
-        />
-        <br />
-        <button
-          disabled={!passPhraseValue || !selected}
-          type="submit"
-          id="submit-passphrase-button"
-          onClick={onGenerateClicked}
-        >
-          Generate
-        </button>
+      <h2>Welcome Teacher</h2>
+      <div>
+       <Select
+          name="form-dept-select"
+          options={options}
+          // defaultValue={{ label: "Select Semester and Subject", value: 0 }}
+          getOptionLabel={option => [ option.semester, " - ", option.subject_name]}
+          getOptionValue={option => [ option.subject_id, option.semester, option.subject_name] }
+          placeholder={"Select Semester and Subject"}
+          onChange={e => {
+              setSelected({
+              subject_id: e.subject_id,
+              semester: e.semester,
+              });
+           }}
+/>
       </div>
+      <br />
+
+      <input
+        type="text"
+        
+        name="passphrase"
+        id="passphrase_input"
+        placeholder="Passphrase"
+        onChange={e => setPassPhraseValue(e.target.value)}
+       
+        required
+        
+      />
+      <br />
+      <button
+        disabled={!passPhraseValue || !selected} 
+        type="submit" 
+        id="submit-passphrase-button"
+        onClick={onGenerateClicked}>Generate</button>
     </div>
   );
 };

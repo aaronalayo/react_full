@@ -48,6 +48,11 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`teachers` (
 `last_name` VARCHAR(20) NOT NULL,
 `email` VARCHAR(60) NOT NULL UNIQUE,
 `password` VARCHAR(120) NOT NULL,
+`google_id` VARCHAR(120),
+`is_verified` BOOLEAN NOT NULL DEFAULT 0,
+`verification_string` VARCHAR(120),
+`oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `department_id` INT NOT NULL);
 
 -- -----------------------------------------------------
@@ -88,6 +93,11 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`students` (
 `last_name` VARCHAR(20) NOT NULL,
 `user_name` VARCHAR(20) NOT NULL,
 `password` VARCHAR(120) NOT NULL,
+`google_id` VARCHAR(120),
+`is_verified` BOOLEAN NOT NULL DEFAULT 0,
+`verification_string` VARCHAR(120),
+`oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `program_id` INT NOT NULL);
 
 
