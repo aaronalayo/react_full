@@ -27,10 +27,10 @@ import { HomePage } from "./pages/Home";
 export const Routing = () => {
     return (
         <BrowserRouter>
-            <Navbar/>
+          
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
-            <Route path="/" element={<LogInPage />}/>
+            <Route path="/login" element={<LogInPage />}/>
             
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>

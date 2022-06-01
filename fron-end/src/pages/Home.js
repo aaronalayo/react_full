@@ -9,6 +9,8 @@ export const HomePage = () => {
       <Navbar />
       <br></br>
       <div className="Home">
+        <br></br>
+        <br></br>
         <h2>Welcome to Roll call System !</h2>
       </div>
     </div>
