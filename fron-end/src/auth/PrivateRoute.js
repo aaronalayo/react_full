@@ -4,5 +4,5 @@ import { useUser } from './useUser';
 export const PrivateRoute = ({children}) => {
     
     const user = useUser();
-    return user ? children : <Navigate to='/login' />
+    return user ? children : <Navigate to='/' />
 }

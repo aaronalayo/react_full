@@ -4,28 +4,31 @@ import { useNavigate  } from 'react-router-dom';
 import { useToken } from "../auth/useToken";
 import { useQueryParams } from "../util/useQueryParams";
 import { Navbar } from "./CommonNavbar";
+import { useUser } from '../auth/useUser';
 import "../css/login.css"
 
 
 axios.defaults.baseURL = 'http://localhost:8080';
 export const LogInPage = () => {
     const [, setToken] = useToken();
-    const [errorMessage, setErrorMessage] = useState('');
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);  
     const [ googleOauthUrl, setgoogleOauthUrl ] = useState('');
     const { token: oauthToken} = useQueryParams();
+    const user = useUser()
         
+    
     const navigate = useNavigate();
 ;
-    useEffect(() => {
-        if(oauthToken) {
-            setToken(oauthToken);
-            navigate('/teacher_overview')
-        }
+    // useEffect(() => {
+    //     if(oauthToken) {
+    //         setToken(oauthToken);
+
+    //         navigate('/teacher_overview')
+    //     }
         
-    }, [oauthToken, setToken, navigate])
+    // }, [oauthToken, setToken, navigate])
 
     useEffect(() => {
         const loadOauthUrl = async () => {
@@ -54,18 +57,27 @@ export const LogInPage = () => {
       function signup() {
         navigate( '/signup')
       };
-      function teacherOverview(){
+
+      function redirectUser(){
+        alert(user.role)
+        if(user.role === "teacher"){
           navigate('/teacher_overview')
+        }else if(user.role === "admin"){
+          navigate("/admin")
+        }else if(user.role === "student"){
+          navigate('/student_overview')
+        }else{
+          navigate('/')
+        }
       }
     const onLogInClicked = async () => {
         await axios.post('/api/login', {
             email: emailValue,
             password: passwordValue,
         }).then((response) => {
-            console.log(response)
             const {token} = response.data;
             setToken(token);
-            teacherOverview();
+            redirectUser();
         }).catch(function (error) {
             if (error.response) {
                 

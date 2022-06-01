@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import {Navigate} from 'react-router-dom'
 
 
 class Logout extends Component {
+  
   constructor(props) {
     super(props);
 
     this.handleLogout = this.handleLogout.bind(this);
   }
-
+  
   handleLogout() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.props.logOutHandler();
-    //window.location.replace('/login');
+    <Navigate to='/' />
   }
 
   render() {
@@ -26,4 +27,4 @@ class Logout extends Component {
 }
 
 
-        export default Logout;
+export default Logout;

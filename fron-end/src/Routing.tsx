@@ -26,7 +26,6 @@ import { Navbar } from "./pages/StudentNavbar";
 export const Routing = () => {
     return (
         <BrowserRouter>
-            <Navbar/>
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
             <Route path="/" element={<LogInPage />}/>

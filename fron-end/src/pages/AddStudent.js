@@ -121,11 +121,14 @@ export const CreateStudent = () => {
       <input
         type="submit"
         value="Save"
-        style={{ width: "19.5%" }}
+        
         onClick={handleSubmit}
       />
       <Link to="/students">
-        <input type="button" value="Go back" onClick={Link} />
+        <input type="button" 
+        value="Go back" 
+        style={{ margin: "auto" }}
+        onClick={Link} />
       </Link>
     </div>
   );

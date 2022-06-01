@@ -17,7 +17,7 @@ export const SignUpPage = () => {
     axios.defaults.baseURL = 'http://localhost:8080';
     const navigate = useNavigate();
     function login() {
-        navigate( '/login')
+        navigate( '/')
       }
     
     function pleaseVerify() {
