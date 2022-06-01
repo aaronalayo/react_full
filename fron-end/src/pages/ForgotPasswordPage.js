@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+
 axios.defaults.baseURL = 'http://localhost:8080';
 export const ForgotPasswordPage = () => {
     const [errorMessage, setErrorMessage] = useState('');

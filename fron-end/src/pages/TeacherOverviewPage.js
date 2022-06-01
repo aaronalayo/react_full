@@ -50,7 +50,8 @@ export const TeacherOverviewPage = () => {
 
           
       ).then((response) => {
-        console.log(response)
+        console.log(response.data)
+        setShowSuccessMessage(response.data)
         // const {token} = response.data;
         
       }).catch(function (error) {
@@ -67,11 +68,13 @@ export const TeacherOverviewPage = () => {
   }
 
   useEffect(() => {
-    if (showSuccessMessage || showErrorMessage) {
+    if ( showErrorMessage) {
       setTimeout(() => {
-        setShowSuccessMessage(false);
+        
         setShowErrorMessage(false);
       }, 3000);
+    }else if(showSuccessMessage){
+      setShowSuccessMessage(false)
     }
   }, [showSuccessMessage, showErrorMessage]);
 

@@ -15,9 +15,7 @@ export const LogInPage = () => {
     const { token: oauthToken} = useQueryParams();
         
     const navigate = useNavigate();
-    function home() {
-        navigate( '/')
-      };
+;
     useEffect(() => {
         if(oauthToken) {
             setToken(oauthToken);

@@ -126,8 +126,11 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
             .then(() => {
                 return t.commit()
             })
-            .then((providedPresenceKey) =>
-             res.status(200).json({providedPresenceKey}))
+            .then(() =>
+            
+                // console.log("generating" , providedPresenceKey))
+                res.status(200).send(providedPresenceKey))
+             
             .catch(function (err) {
                 t.rollback();
                 let { custom_status, custom_msg } = err
@@ -141,7 +144,7 @@ router.post("/passphrase", authenticateToken('teacher'), function (req, res) {
                 }
                 res.status(500).send('Something went wrong')
                 throw err;
-            });
+            })
     }).catch(err => console.log(err));
 
 })
