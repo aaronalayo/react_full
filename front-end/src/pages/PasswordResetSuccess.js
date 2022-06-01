@@ -4,7 +4,7 @@ export const PasswordResetSuccess = () => {
     const navigate = useNavigate();
  
     function login() {
-        navigate('/login')
+        navigate('/')
       }
     return  (
         <div className="content-container">
