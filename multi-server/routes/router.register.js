@@ -88,6 +88,44 @@ router.post("/signup", async (req, res) => {
             res.status(500).send(err)
           });
       }
+      // else {
+      //   db.sequelize.models.admin
+      //     .findOne({ where: { email } })
+      //     .then((admin) => {
+      //       if (admin) {
+      //         if (admin.password === activationCode) {
+      //           admin.update({ password: hashed_password });
+      //           jwt.sign(
+      //             {
+      //               role: "admin",
+      //               email: admin.email,
+      //               id: admin.admin_id,
+      //             },
+      //             process.env.JWT_SECRET,
+      //             { expiresIn: "2d" },
+      //             (err, token) => {
+      //               if (err) {
+      //                 return res.status(500).send(err);
+      //               }
+      //               console.log("success");
+      //               return res.status(200).json({ token });
+      //             }
+      //           );
+      //         }
+      //         else {
+      //           return res.status(400).send("Student: wrong activation code");
+      //         }
+      //       }
+      //       else {
+      //         return res.status(400).send("Email is not in the system");
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       //   return true;
+      //       console.log(err);
+      //       res.status(500).send(err);
+      //     });
+      // }
     });
 });
 

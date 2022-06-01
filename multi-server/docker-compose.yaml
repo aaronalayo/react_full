@@ -32,6 +32,8 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     env_file: ./.env
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
     ports:
       - ${MYSQLDB_LOCAL_PORT}:${MYSQLDB_DOCKER_PORT}
     environment:

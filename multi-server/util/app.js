@@ -14,6 +14,10 @@ app.get('/teacher_overview', authenticateToken('teacher'), (req, res, next) => {
     next();
 });
 
+app.get("/admin_overview", authenticateToken("admin"), (req, res, next) => {
+  next();
+});
+
 app.get('/student_overview', authenticateToken('student'), (req, res, next) => {
     next();
 });

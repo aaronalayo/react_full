@@ -4,7 +4,7 @@ const db = require('../connectors/db.mysql');
 
 
 // Create and Save a new Teacher
-router.post("/createNew", (req, res) => {
+router.post("/create", (req, res) => {
 
      /*
     #swagger.tags = ['teacher', 'mysql']
@@ -22,16 +22,17 @@ router.post("/createNew", (req, res) => {
             "department_id": 2
         }
     } */
-
+    console.log(req.body)
     try {
-        db.sequelize.models.teachers.create({
-
+        db.sequelize.models.teachers
+          .create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password,
-            department_id: req.body.department_id
-        }).then(newTeacher => res.send(newTeacher));
+            department_id: req.body.department_id,
+          })
+          .then((newTeacher) => res.status(200).json({ newTeacher }));
     }
     catch (error) {
         res.status(501).send(error);
@@ -51,7 +52,6 @@ router.get("/all", (req, res) => {
 
 });
 
-
 // Find a single Teacher with an id
 
 router.get("/findOne/:id", (req, res) => {
@@ -64,14 +64,15 @@ router.get("/findOne/:id", (req, res) => {
         description: 'teacher id',
         required: true
     } */
-
+    console.log(req.params)
     db.sequelize.models.teachers.findOne({ where: { teacher_id: req.params.id } })
         .then(oneTeacher => {
             if (!oneTeacher) {
                 res.status(404).send("Teacher not found")
             }
             else {
-                res.send(oneTeacher.toJSON())
+                res.json({ oneTeacher });
+                //res.send(oneTeacher.toJSON())
             }
         })
         .catch(err => res.status(500).send('Something went wrong'));
@@ -104,6 +105,7 @@ router.post("/updateOne/:id", (req, res) => {
     } */
 
     const { first_name, last_name, email, department_id, password } = req.body;
+    
 
     db.sequelize.models.teachers.update({
 
@@ -120,7 +122,7 @@ router.post("/updateOne/:id", (req, res) => {
             res.status(404).send("Teacher not found")
         }
         else {
-            res.send("Updated teacher with ID: " + req.params.id)
+            res.send("Updated teacher with ID: " + req.params.id);
         }
     }).catch(error => {
         console.log(error)
@@ -158,4 +160,4 @@ router.post("/delete/:id", (req, res) => {
 
 
 
-module.exports = router
+module.exports = router;
