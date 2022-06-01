@@ -9,7 +9,7 @@ import { PleaseVerifyEmailPage } from "./pages/PleaseVerifyEmailPage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
-import { Admin } from "./pages/Admin";
+import { CreateAdmin } from "./pages/addAdmin";
 import { ToastContainer } from 'react-toastify';
 import { GetTeacherList } from "./pages/TeacherList";
 import { GetStudentList } from "./pages/StudentList";
@@ -31,8 +31,7 @@ export const Routing = () => {
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
                 <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
-                <Route path="/admin" element={<AdminPage />}></Route>
-            <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
+                <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
                 <Route path="/login" element={<LogInPage />}></Route>
@@ -40,16 +39,18 @@ export const Routing = () => {
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
                 <Route path="/signup"element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
+                
                 <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
-
                 <Route path="/teachers" element={<GetTeacherList />}> </Route>
+                <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
+
+                <Route path="/admin" element={<AdminPage />}></Route>
+                <Route path="/addAdmin" element={<CreateAdmin />}> </Route>
 
                 <Route path="/students" element={<GetStudentList />}> </Route>
-
                 <Route path="/addStudent" element={<CreateStudent />}> </Route>
-
-                <Route path="/updateStudent" element={<UpdateStudent />}> </Route>
-                <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
+                <Route path="/updateStudent/:id" element={<UpdateStudent />}> </Route>
+                
                 <Route path="/about"element={<About />}></Route>
             </Routes>
             

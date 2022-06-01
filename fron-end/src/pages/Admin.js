@@ -61,9 +61,6 @@ export const Admin = () => {
       setState({ ...response.data[0] });
     }
   };
-  
-
-
     return (
       <div style={{ marginTop: "150px" }}>
         <h2>Welcome to Roll call admin Overview page</h2>

@@ -6,6 +6,7 @@ const loginRoute = require('./router.login');
 const registerRoute = require('./router.register');
 const teacherAPI = require('./router.teacherAPI');
 const studentAPI = require('./router.studentAPI');
+const admin = require('./router.admin');
 
 const baseRoute = '/api';
 
@@ -17,5 +18,8 @@ module.exports = function (app) {
     app.use(baseRoute, registerRoute);
     app.use(baseRoute + '/teachers', teacherAPI);
     app.use(baseRoute + '/students', studentAPI);
+    app.use(baseRoute + "/admin", admin);
+
+
 
 }

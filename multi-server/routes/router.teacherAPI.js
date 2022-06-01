@@ -52,7 +52,6 @@ router.get("/all", (req, res) => {
 
 });
 
-
 // Find a single Teacher with an id
 
 router.get("/findOne/:id", (req, res) => {
@@ -161,4 +160,4 @@ router.post("/delete/:id", (req, res) => {
 
 
 
-module.exports = router
+module.exports = router;

@@ -29,7 +29,7 @@ INSERT INTO `rollcall_db`.`subjects` (`subject_name`,`program_id`) VALUES ('Inte
 INSERT INTO `rollcall_db`.`subjects` (`subject_name`,`program_id`) VALUES ('Process,Design,Experiments and Prototyping','4');
  
 
-INSERT INTO `rollcall_db`.`admin` (`first_name`,`last_name`,`email`,`password`) VALUES ('Steven','Jobs','admin@kea.dk','admin123');
+INSERT INTO `rollcall_db`.`admin` (`first_name`,`last_name`,`email`,`password`) VALUES ('Steven','Jobs','admin@kea.dk','$2b$10$0.2mLm4fnYgtoLAfhwDLGuwEPKQvz4qSe.rudZajaiGpB1DyLvuy6');
 
 
 INSERT INTO `rollcall_db`.`teachers` (`first_name`,`last_name`,`email`,`password`,`department_id`) VALUES ('Asger Batting','Clausen','ASBC@kea.dk','ASBC','1');

@@ -4,6 +4,7 @@ var _presence_audit = require("./presence_audit");
 var _presence_key = require("./presence_key");
 var _programs = require("./programs");
 var _students = require("./students");
+var _admin = require("./admin");
 var _students_presence = require("./students_presence");
 var _students_programs_departments = require("./students_programs_departments");
 var _students_subjects = require("./students_subjects");
@@ -23,6 +24,7 @@ function initModels(sequelize) {
   var students_subjects = _students_subjects(sequelize, DataTypes);
   var subjects = _subjects(sequelize, DataTypes);
   var teachers = _teachers(sequelize, DataTypes);
+  var admin = _admin(sequelize, DataTypes);
   var teachers_semesters_subjects = _teachers_semesters_subjects(sequelize, DataTypes);
   var teachers_subjects = _teachers_subjects(sequelize, DataTypes);
 
@@ -72,6 +74,7 @@ function initModels(sequelize) {
     students_subjects,
     subjects,
     teachers,
+    admin,
     teachers_semesters_subjects,
     teachers_subjects,
   };

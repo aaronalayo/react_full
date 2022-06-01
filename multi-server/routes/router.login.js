@@ -37,48 +37,86 @@ router.post('/login', ratelimiter, async (req, res) => {
         //Sequalize user -> Retrieve that teacher that matches the criteria
         const teacher = await db.sequelize.models.teachers.findOne({ where: { email } });
         const student = await db.sequelize.models.students.findOne({ where: { user_name: email } });
+        const admin = await db.sequelize.models.admin.findOne({ where: { email } });
 
-        if (teacher == null && student == null) {
-            res.status(400).json("User doesn't exist" );
-        } else if (teacher) {
-            // if (await bcrypt.compare(plainPassword, teacher.password)) {
-            //     const accessToken = jwt.sign({ role: 'teacher', email: teacher.email, id: teacher.teacher_id }, process.env.JWT_SECRET);
-            //     res.status(200).cookie('accessToken', accessToken);
-            //     return res.redirect('/teacher_overview');
-            // } else {
-            //     res.status(400).json({ message: "Wrong password" });
-            // }
-            await bcrypt.compare(plainPassword, teacher.password).then( (isCorrect) => {
-                if( isCorrect == true) {
-                    jwt.sign({ role: 'teacher', email: teacher.email, id: teacher.teacher_id }, process.env.JWT_SECRET, {expiresIn: '2d'}, (err, token) => {
-                        if(err){
-                            
-                            res.status(500).json({err});
-                        }
-                        res.status(200).json({token})
-                        // res.redirect('/teacher_overview')
-                       
-                    });
+      
+        if (teacher) {
+            await bcrypt
+              .compare(plainPassword, teacher.password)
+              .then((isCorrect) => {
+                if (isCorrect == true) {
+                  jwt.sign(
+                    {
+                      role: "teacher",
+                      email: teacher.email,
+                      id: teacher.teacher_id,
+                    },
+                    process.env.JWT_SECRET,
+                    { expiresIn: "2d" },
+                    (err, token) => {
+                      if (err) {
+                        res.status(500).json({ err });
+                      }
+                      res.status(200).json({ token });
+                      // res.redirect('/teacher_overview')
+                    }
+                  );
                 } else {
-                    res.sendStatus(401)
-        
+                  res.sendStatus(401);
                 }
-        })
-        } else if (student) {
-            await bcrypt.compare(plainPassword, student.password).then( (isCorrect) => {
-                if( isCorrect == true) {
-                    jwt.sign({ role: 'student', email: student.user_name, id: student.student_id }, process.env.JWT_SECRET, {expiresIn: '2d'}, (err, token) => {
-                        if(err){
-                            console.log({err})
-                            res.status(500).json({err});
-                        }
-                        res.status(200).json({token})
-                    });
-                } else {
-                    res.status(400).json({ message: "Wrong password" });
-        
-                }
-        })
+              });
+          }
+        else if (student) {
+          await bcrypt
+            .compare(plainPassword, student.password)
+            .then((isCorrect) => {
+              if (isCorrect == true) {
+                jwt.sign(
+                  {
+                    role: "student",
+                    email: student.user_name,
+                    id: student.student_id,
+                  },
+                  process.env.JWT_SECRET,
+                  { expiresIn: "2d" },
+                  (err, token) => {
+                    if (err) {
+                      console.log({ err });
+                      res.status(500).json({ err });
+                    }
+                    res.status(200).json({ token });
+                  }
+                );
+              } else {
+                res.status(400).json({ message: "Wrong password" });
+              }
+            });
+        }
+        else if (admin) {
+          await bcrypt
+            .compare(plainPassword, admin.password)
+            .then((isCorrect) => {
+              if (isCorrect == true) {
+                jwt.sign(
+                  {
+                    role: "admin",
+                    email: admin.email,
+                    id: admin.admin_id,
+                  },
+                  process.env.JWT_SECRET,
+                  { expiresIn: "2d" },
+                  (err, token) => {
+                    if (err) {
+                      res.status(500).json({ err });
+                    }
+                    res.status(200).json({ token });
+                    //res.redirect('/admin_overview')
+                  }
+                );
+              } else {
+                res.sendStatus(401);
+              }
+            });
         }
     } catch (error) {
         res.status(500).json({error});
