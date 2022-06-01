@@ -80,7 +80,8 @@ export const TeacherOverviewPage = () => {
   }, [showSuccessMessage, showErrorMessage]);
 
   return (
-    
+    <div>
+      <Navbar></Navbar>
       <div className="content-container">
         <h2>Create Check-in Passphrase</h2>
         {showSuccessMessage && (
@@ -88,42 +89,51 @@ export const TeacherOverviewPage = () => {
         )}
         {showErrorMessage && <div className="fail">{showErrorMessage}</div>}
 
-      <h2>Welcome Teacher</h2>
-      <div>
-       <Select
-          name="form-dept-select"
-          options={options}
-          // defaultValue={{ label: "Select Semester and Subject", value: 0 }}
-          getOptionLabel={option => [ option.semester, " - ", option.subject_name]}
-          getOptionValue={option => [ option.subject_id, option.semester, option.subject_name] }
-          placeholder={"Select Semester and Subject"}
-          onChange={e => {
+        <h2>Welcome Teacher</h2>
+        <div>
+          <Select
+            name="form-dept-select"
+            options={options}
+            // defaultValue={{ label: "Select Semester and Subject", value: 0 }}
+            getOptionLabel={(option) => [
+              option.semester,
+              " - ",
+              option.subject_name,
+            ]}
+            getOptionValue={(option) => [
+              option.subject_id,
+              option.semester,
+              option.subject_name,
+            ]}
+            placeholder={"Select Semester and Subject"}
+            onChange={(e) => {
               setSelected({
-              subject_id: e.subject_id,
-              semester: e.semester,
+                subject_id: e.subject_id,
+                semester: e.semester,
               });
-           }}
-/>
-      </div>
-      <br />
+            }}
+          />
+        </div>
+        <br />
 
-      <input
-        type="text"
-        
-        name="passphrase"
-        id="passphrase_input"
-        placeholder="Passphrase"
-        onChange={e => setPassPhraseValue(e.target.value)}
-       
-        required
-        
-      />
-      <br />
-      <button
-        disabled={!passPhraseValue || !selected} 
-        type="submit" 
-        id="submit-passphrase-button"
-        onClick={onGenerateClicked}>Generate</button>
+        <input
+          type="text"
+          name="passphrase"
+          id="passphrase_input"
+          placeholder="Passphrase"
+          onChange={(e) => setPassPhraseValue(e.target.value)}
+          required
+        />
+        <br />
+        <button
+          disabled={!passPhraseValue || !selected}
+          type="submit"
+          id="submit-passphrase-button"
+          onClick={onGenerateClicked}
+        >
+          Generate
+        </button>
+      </div>
     </div>
   );
 };
