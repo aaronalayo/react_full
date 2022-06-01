@@ -19,6 +19,7 @@ import { UpdateStudent } from "./pages/UpdateStudent";
 import { AdminPage } from "./pages/AdminPage";
 import { About } from "./pages/about";
 import { Navbar } from "./pages/StudentNavbar";
+import { HomePage } from "./pages/Home";
 
 
 
@@ -52,6 +53,7 @@ export const Routing = () => {
                 <Route path="/addStudent" element={<CreateStudent />}> </Route>
                 <Route path="/updateStudent/:id" element={<UpdateStudent />}> </Route>
                 
+                <Route path="/" element={<HomePage />}></Route>
                 <Route path="/about"element={<About />}></Route>
             </Routes>
             
