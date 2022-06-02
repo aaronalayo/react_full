@@ -6,6 +6,13 @@ GET http://localhost:8080/api/teachers/all
 
 ###
 
+GET http://localhost:8080/teacher_overview
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiVE9NUEBrZWEuZGsiLCJpZCI6MiwiaWF0IjoxNjU0MTg3Mjk5LCJleHAiOjE2NTQzNjAwOTl9.Cw3A6hrJwrTYJmMVyuXoywFrk0RcT94dqWxYZXqqLE4
+
+
+###
+
 POST http://localhost:8080/api/signup
 Content-Type: application/json
 
@@ -21,6 +28,6 @@ POST http://localhost:8080/api/login
 Content-Type: application/json
 
 {
-    "email": "ASBC@kea.dk",
+    "email": "tomp@kea.dk",
     "password": "12345678"
 }
