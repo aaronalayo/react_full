@@ -118,12 +118,12 @@ export const CreateStudent = () => {
         value={program_id }
         onChange={handleInputChange}
       />
-      <input
+      <button
         type="submit"
         value="Save"
         
         onClick={handleSubmit}
-      />
+      >Save</button>
       <Link to="/students">
         <input type="button" 
         value="Go back" 

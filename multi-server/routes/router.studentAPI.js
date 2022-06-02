@@ -74,7 +74,7 @@ router.get("/findOne/:id", (req, res) => {
                 res.status(404).send("Student not found")
             }
             else {
-                res.send(oneStudent.toJSON())
+                res.status(200).json({oneStudent})
             }
         })
         .catch(err => res.status(500).send('Something went wrong'));

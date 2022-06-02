@@ -125,12 +125,12 @@ export const CreateTeacher = () => {
           value={department_id}
           onChange={handleInputChange}
         />
-        <input
+        <button
           type="submit"
           value={"Save"}
       
           onClick={handleSubmit}
-        />
+        >Save</button>
         <Link to="/teachers">
           <input
             type="button"

@@ -10,7 +10,7 @@ import "../css/login.css"
 
 axios.defaults.baseURL = 'http://localhost:8080';
 export const LogInPage = () => {
-    const [, setToken] = useToken();
+    const [token, setToken] = useToken();
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [showErrorMessage, setShowErrorMessage] = useState(false);  
@@ -36,11 +36,10 @@ export const LogInPage = () => {
     useEffect(() => {
         if(oauthToken) {
             setToken(oauthToken);
-
-            navigate('/teacher_overview')
+            navigate('/admin')
         }
         
-    }, [oauthToken, setToken, navigate])
+    }, [oauthToken, token,setToken, navigate])
 
     useEffect(() => {
         const loadOauthUrl = async () => {

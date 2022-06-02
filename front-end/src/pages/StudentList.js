@@ -32,10 +32,10 @@ export const GetStudentList = () => {
       setData(response.data);
     }
   };
-  console.log(data);
+
 
   const handleEditButtonClick = (student_id) =>
-    navigate(`/api/students/update/${student_id}`);
+    navigate(`/students/findOne/${student_id}`);
 
   return (
     <div>

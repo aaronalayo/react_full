@@ -22,6 +22,7 @@ import { NotFound } from "./pages/NotFound";
 import { Navbar } from "./pages/StudentNavbar";
 import { PassPhrasePage } from "./pages/PassPhrasePage";
 import { StudentOverviewPage } from "./pages/StudentOverviewPage";
+import { GetSingleStudent } from "./pages/singleStudentPage";
 
 
 
@@ -48,14 +49,14 @@ export const Routing = () => {
                 
                 <Route path="/addTeacher" element={<PrivateRoute><CreateTeacher /></PrivateRoute>}> </Route>
                 <Route path="/teachers" element={<PrivateRoute><GetTeacherList /></PrivateRoute>}> </Route>
-                <Route path="/teachers/updateOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
+                <Route path="/teachers/findOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
 
                 <Route path="/admin" element={<PrivateRoute > <AdminPage /></PrivateRoute>}></Route>
                 {/* <Route path="/addAdmin" element={<PrivateRoute><CreateAdmin /></PrivateRoute>}> </Route> */}
 
                 <Route path="/students" element={<PrivateRoute><GetStudentList /></PrivateRoute>}> </Route>
                 <Route path="/addStudent" element={<PrivateRoute><CreateStudent /></PrivateRoute>}> </Route>
-                <Route path="/updateStudent/:id" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>
+                <Route path="/students/findOne/:id" element={<PrivateRoute><GetSingleStudent /></PrivateRoute>}> </Route>
                 
                 <Route path="/about"element={<About />}></Route>
                 <Route path='*' element={<NotFound />}></Route>

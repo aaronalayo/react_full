@@ -39,7 +39,7 @@ export const GetTeacherList = () => {
 
 
   const handleEditButtonClick = (teacher_id) =>
-      navigate(`/teachers/updateOne/${teacher_id}`);
+      navigate(`/teachers/findOne/${teacher_id}`);
 
 
   return (
