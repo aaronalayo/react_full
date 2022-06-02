@@ -18,11 +18,11 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/api/students/findOne/14
+GET http://localhost:8080/api/students/findOne/1
 Content-Type: application/json
 
 ###
-POST http://localhost:8080/api/students/update/14
+POST http://localhost:8080/api/students/update/2
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/api/students/delete/15
+POST http://localhost:8080/api/students/delete/52
 Content-Type: application/json
 
 

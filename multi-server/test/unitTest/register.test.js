@@ -48,7 +48,7 @@ describe("Test route for register", () => {
 
     test("It should response the GET method", done => {
         request(app)
-            .get('/register')
+            .get('/api/register')
             .then(response => {
                 expect(response.statusCode).toBe(200);
                 done();
@@ -59,7 +59,7 @@ describe("Test route for register", () => {
 
     test("Test for valid input should redirect", done => {
         request(app)
-            .post('/sql/register')
+            .post('/api/register')
             .send({
                 email: teacherEmail,
                 activation_code: password,
@@ -75,7 +75,7 @@ describe("Test route for register", () => {
 
     test("Test for invalid email", done => {
         request(app)
-            .post('/sql/register')
+            .post('/api/register')
             .send({
                 email: "NOTJART@kea.dk",
                 activation_code: password,
@@ -91,7 +91,7 @@ describe("Test route for register", () => {
 
     test("Test for invalid activation_code", done => {
         request(app)
-            .post('/sql/register')
+            .post('/api/register')
             .send({
                 email: teacherEmail,
                 activation_code: "Axyz",
@@ -107,7 +107,7 @@ describe("Test route for register", () => {
 
     test("Test for invalid password", done => {
         request(app)
-            .post('/sql/register')
+            .post('/api/register')
             .send({
                 email: teacherEmail,
                 activation_code: password,
@@ -123,7 +123,7 @@ describe("Test route for register", () => {
 
     test("Test for invalid repeat_password", done => {
         request(app)
-            .post('/sql/register')
+            .post('/api/register')
             .send({
                 email: teacherEmail,
                 activation_code: password,

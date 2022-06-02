@@ -4,9 +4,9 @@ Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtY
 Content-Type: application/json
 
 {
-    "teacher_id": "1",
-    "subject_id": "1",
-    "semester": "SD21i",
+    "teacher_id": "5",
+    "subject_id": "3",
+    "semester": "SD21w",
     "passphrase": "blue little monkeys"
 }
 
@@ -16,6 +16,6 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciI
 Content-Type: application/json
 
 {
-    "teacher_id": "1"
+    "teacher_id": "5"
 }
 

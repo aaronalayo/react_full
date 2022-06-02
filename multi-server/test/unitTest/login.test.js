@@ -51,7 +51,7 @@ describe("Test route for login", () => {
 
     test("Login: Test for valid inputs should redirect", done => {
         request(app)
-            .post('/sql/login')
+            .post('/api/login/')
             .send({
                 email: teacherEmail,
                 password: password,
@@ -64,7 +64,7 @@ describe("Test route for login", () => {
 
     test("Login: Test for invalid email", done => {
         request(app)
-            .post('/sql/login')
+            .post('/api/login/')
             .send({
                 email: "invalid@test.com",
                 password: password
@@ -77,7 +77,7 @@ describe("Test route for login", () => {
 
     test("Login: Test for invalid password", done => {
         request(app)
-            .post('/sql/login')
+            .post('/api/login/')
             .send({
                 email: teacherEmail,
                 password: "wrongPassword123"
