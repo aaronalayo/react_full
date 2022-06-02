@@ -22,7 +22,7 @@ export const Navbar = () => {
                 <Link to="/addStudent">Add Student</Link>
                 {/* <Link to="/student_overview">Check In</Link> */}
                 <Link to="/about">About</Link>
-                { isLoggedIn && <a onClick={()=>{setToken(null)}} href="/logout">Logout</a>}
+                { isLoggedIn && <Link onClick={()=>{setToken(null)}} to="/logout">Logout</Link>}
             </div>
         </nav>
     );

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToken } from "../../auth/useToken";
 import { Navbar } from "../../fragment/StudentNav";
-// import { Navbar } from "./StudentNavbar";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -26,12 +26,14 @@ export const StudentOverviewPage = () => {
 
 
         ).then((response) => {
-            setShowSuccessMessage(response.data)
+            // setShowSuccessMessage(response.data)
+            toast.success(response.data)
 
 
         }).catch(function (error) {
             if (error.response) {
-                setShowErrorMessage(error.response.data)
+                // setShowErrorMessage(error.response.data)
+                toast.error(error.response.data)
                 // Request made and server responded
                 console.log(error.response.data);
                 console.log(error.response.status);

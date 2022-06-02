@@ -74,81 +74,81 @@ export const CreateStudent = () => {
   return (
     <div>
       <Navbar />
-    <div className="auth-content-container">
-      <br></br>
-      <br></br>
-      <h2>Student Form</h2>
-      <br></br>
-      <div className="form-outline mb-4">
-      <input
-        className="form-control"
-        type="text"
-        id="name"
-        name="first_name"
-        placeholder="First Name"
-        value={first_name}
-        onChange={handleInputChange}
-      />
-      </div>
-      <div className="form-outline mb-4">
-      <input
-        className="form-control"
-        type="text"
-        id="name"
-        name="last_name"
-        placeholder="Last Name"
-        value={last_name}
-        onChange={handleInputChange}
-      />
-      </div>
-      <div className="form-outline mb-4">
-      <input
-        className="form-control"
-        type="text"
-        id="user_name"
-        name="user_name"
-        placeholder="User Name"
-        value={user_name}
-        onChange={handleInputChange}
-      />
-      </div>
-      <div className="form-outline mb-4">
-      <input
-        className="form-control"
-        type="password"
-        id="password"
-        name="password"
-        placeholder="password"
-        value={password}
-        onChange={handleInputChange}
-      />
-      </div>
-      <div className="form-outline mb-4">
-      <input
-        className="form-control"
-        type="number"
-        id="program_id"
-        name="program_id"
-        placeholder="Program Id"
-        value={program_id}
-        onChange={handleInputChange}
-      />
-      </div>
-      <div className="form-outline mb-4">
-      <button className="btn btn-success btn-block mb-4"
-        onClick={handleSubmit}
-      >Save</button>
-      </div>
-      {/* <input
+      <div className="auth-content-container">
+        <br></br>
+        <br></br>
+        <h2>Student Form</h2>
+        <br></br>
+        <div className="form-outline mb-4">
+          <input
+            className="form-control"
+            type="text"
+            id="name"
+            name="first_name"
+            placeholder="First Name"
+            value={first_name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-outline mb-4">
+          <input
+            className="form-control"
+            type="text"
+            id="name"
+            name="last_name"
+            placeholder="Last Name"
+            value={last_name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-outline mb-4">
+          <input
+            className="form-control"
+            type="text"
+            id="user_name"
+            name="user_name"
+            placeholder="User Name"
+            value={user_name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-outline mb-4">
+          <input
+            className="form-control"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            value={password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-outline mb-4">
+          <input
+            className="form-control"
+            type="number"
+            id="program_id"
+            name="program_id"
+            placeholder="Program Id"
+            value={program_id}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-outline mb-4">
+          <button className="btn btn-success btn-block mb-4"
+            onClick={handleSubmit}
+          >Save</button>
+        </div>
+        {/* <input
         type="submit"
         value="Save"
         style={{ width: "19.5%" }}
         onClick={handleSubmit}
       /> */}
-      <div className="form-outline mb-4">
-        <Link to={(-1)}><button className="btn btn-success btn-block mb-4">Back</button></Link>
+        <div className="form-outline mb-4">
+          <Link to={(-1)}><button className="btn btn-success btn-block mb-4">Back</button></Link>
+        </div>
       </div>
-    </div>
     </div>
   );
 };
