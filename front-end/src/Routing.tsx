@@ -18,6 +18,7 @@ import { CreateStudent } from "./pages/AddStudent";
 import { UpdateStudent } from "./pages/UpdateStudent";
 import { AdminPage } from "./pages/AdminPage";
 import { About } from "./pages/about";
+import { NotFound } from "./pages/NotFound";
 import { Navbar } from "./pages/StudentNavbar";
 import { PassPhrasePage } from "./pages/PassPhrasePage";
 import { StudentOverviewPage } from "./pages/StudentOverviewPage";
@@ -57,6 +58,7 @@ export const Routing = () => {
                 <Route path="/updateStudent/:id" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>
                 
                 <Route path="/about"element={<About />}></Route>
+                <Route path='*' element={<NotFound />}></Route>
             </Routes>
             
         </BrowserRouter>
