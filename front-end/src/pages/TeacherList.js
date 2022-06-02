@@ -43,7 +43,7 @@ export const GetTeacherList = () => {
 
 
   return (
-    <div style={{ marginTop: "15px" }}>
+    <div>
      <Navbar/>
       <div className="Details">
         <br></br>

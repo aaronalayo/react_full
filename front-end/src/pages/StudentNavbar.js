@@ -1,25 +1,33 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 
 export const Navbar = () => {
+  const navigate =useNavigate();
+  function logout(){
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+  function home(){
+    navigate('/')
+  }
+  function checkIn(){
+    navigate("/student_overview")
+  }
   return (
     <div className="navbar">
       <div className="logo">Roll Call System</div>
       <div className="menus">
         <ul className="menu">
           <li>
-            <Link to="/">Home</Link>
+          <button onClick={home}>Home</button>
           </li>
           <li>
-            <Link to="">Check In </Link>
+          <button onClick={checkIn}>Home</button>
           </li>
           <li>
-            <Link to="">See Statistics</Link>
-          </li>
-          <li>
-            <Link to="">logout</Link>
+            <button onClick={logout}>logout</button>
           </li>
         </ul>
       </div>

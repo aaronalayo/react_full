@@ -7,7 +7,7 @@ export const About = () => {
       <Navbar />
       <br></br>
       <div className="admin" >
-        <p>
+        <p className="about">
           Welcome to Roll call System. This is our Software Development 6th
         Semester Project Demo for Fullstack ! This project is about building a
          full-stack React + Node.js + Express + MySQL project with a CRUD

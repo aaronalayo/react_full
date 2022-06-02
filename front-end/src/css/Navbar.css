@@ -27,6 +27,13 @@ box-sizing: border-box;
     text-decoration: none;
     margin: 0 1em;
 }
+.menu li{
+    margin-left: 20px;
+}
 a:active {
     background-color: rgb(23, 197, 90);
+}
+
+.navbar li {
+    margin-left: 20px;
 }

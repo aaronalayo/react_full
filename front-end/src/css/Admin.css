@@ -54,7 +54,7 @@ table th{
      margin-top: 50px ;
  }
 /*  About box style */
- p {
+ .about{
      font-size: 150%;
      content: center;
      background-color: rgb(253, 253, 253);
@@ -64,7 +64,16 @@ table th{
      box-shadow: 10px 10px 5px rgb(35, 35, 35);
      margin: auto;
  }
-
+ p {
+    font-size: 150%;
+    content: center;
+    background-color: rgb(253, 253, 253);
+    width: 500px;
+    border: 15px solid rgb(178, 180, 178);
+    padding: 10px;
+    /* box-shadow: 10px 10px 5px rgb(35 35 35); */
+    margin: auto;
+}
  .content-container{
     margin-top: 30px;
     content: center;

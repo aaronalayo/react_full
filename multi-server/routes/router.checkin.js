@@ -75,7 +75,7 @@ router.post("/checkin", authenticateToken('student'), function (req, res) {
 
         })
         .then(() => {
-            return res.send('Checked in!')
+            return res.status(200).send('Checked in!')
         })
         .catch(err => {
             let { custom_status, custom_msg } = err

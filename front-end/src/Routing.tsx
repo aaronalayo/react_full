@@ -5,7 +5,7 @@ import { LogInPage } from "./pages/LogInPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { PasswordResetLandingPage } from "./pages/PasswordResetLandingPage";
 import { PleaseVerifyEmailPage } from "./pages/PleaseVerifyEmailPage";
-import { PrivateRoute } from "./auth/PrivateRoute";
+import { PrivateRoute, PrivateRouteStudent } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
 import { CreateAdmin } from "./pages/addAdmin";
@@ -19,6 +19,9 @@ import { UpdateStudent } from "./pages/UpdateStudent";
 import { AdminPage } from "./pages/AdminPage";
 import { About } from "./pages/about";
 import { Navbar } from "./pages/StudentNavbar";
+import { PassPhrasePage } from "./pages/PassPhrasePage";
+import { StudentOverviewPage } from "./pages/StudentOverviewPage";
+
 
 
 
@@ -31,6 +34,8 @@ export const Routing = () => {
             <Route path="/" element={<LogInPage />}/>
             
             <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
+            <Route path="/passphrase" element={<PrivateRoute><PassPhrasePage /></PrivateRoute>} />
+            <Route path="/student_overview" element={<PrivateRouteStudent><StudentOverviewPage /></PrivateRouteStudent>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
                 
@@ -44,8 +49,8 @@ export const Routing = () => {
                 <Route path="/teachers" element={<PrivateRoute><GetTeacherList /></PrivateRoute>}> </Route>
                 <Route path="/teachers/updateOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
 
-                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
-                <Route path="/addAdmin" element={<PrivateRoute><CreateAdmin /></PrivateRoute>}> </Route>
+                <Route path="/admin" element={<PrivateRoute > <AdminPage /></PrivateRoute>}></Route>
+                {/* <Route path="/addAdmin" element={<PrivateRoute><CreateAdmin /></PrivateRoute>}> </Route> */}
 
                 <Route path="/students" element={<PrivateRoute><GetStudentList /></PrivateRoute>}> </Route>
                 <Route path="/addStudent" element={<PrivateRoute><CreateStudent /></PrivateRoute>}> </Route>

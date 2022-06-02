@@ -1,36 +1,53 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "../css/Navbar.css"
-import Logout from "./logout";
+
 
 
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+  function home(){
+    navigate('/')
+  }
+  function addTeacher(){
+    navigate("/addTeacher")
+  }
+  function addStudent(){
+    navigate("/addStudent")
+  }
+  function teachers(){
+    navigate("/teachers")
+  }
+  function students(){
+    navigate("/students")
+  }
+  function logout(){
+    localStorage.removeItem('token')
+    navigate("/")
+  }
     return (
       <div className="navbar">
         <div className="logo">Roll Call System</div>
         <div className="menus">
           <ul className="menu">
+            {/* <li>
+              <button onClick={home}>Home</button>
+            </li> */}
             <li>
-              <Link to="/">Home</Link>
+            <button onClick={addTeacher}>Add Teacher</button>
             </li>
             <li>
-              <Link to="/addTeacher">Add Teacher </Link>
+            <button onClick={addStudent}>Add Student</button>
             </li>
             <li>
-              <Link to="/addStudent">Add Student</Link>
+            <button onClick={teachers}>Teachers List</button>
             </li>
             <li>
-              <Link to="/teachers">See Teacher List</Link>
+            <button onClick={students}>Students List</button>
             </li>
             <li>
-              <Link to="/students">See Student List</Link>
-            </li>
-            <li>
-              <Link to="/login" onClick={Link} component={Logout}>
-                Logout
-              </Link>
-
+            <button onClick={logout}>Logout</button>
               
             </li>
           </ul>

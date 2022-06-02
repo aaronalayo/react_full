@@ -38,7 +38,7 @@ export const GetStudentList = () => {
     navigate(`/api/students/update/${student_id}`);
 
   return (
-    <div style={{ marginTop: "15px" }}>
+    <div>
       <Navbar />
       <div className="Details">
         <br></br>

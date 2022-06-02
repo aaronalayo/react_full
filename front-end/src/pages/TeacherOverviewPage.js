@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useToken } from "../auth/useToken";
 import { useUser } from "../auth/useUser";
-import { Navbar } from "./TeacherNavbar";
+import { TeacherNavbar } from "./TeacherNavbar"
 import Select from 'react-select'
+import { useNavigate } from "react-router-dom";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -15,6 +16,10 @@ export const TeacherOverviewPage = () => {
   const [options, setOptions] = useState([]);
   const [passPhraseValue, setPassPhraseValue] = useState('');
 
+  const navigate = useNavigate();
+  function showPassPhrase(){
+    navigate("/passphrase")
+  }
  
   useEffect(() => {
       axios
@@ -51,9 +56,9 @@ export const TeacherOverviewPage = () => {
 
           
       ).then((response) => {
-        console.log(response.data)
+        sessionStorage.setItem("passphrase", response.data)
         setShowSuccessMessage(response.data)
-        // const {token} = response.data;
+        showPassPhrase();
         
       }).catch(function (error) {
           if (error.response) {
@@ -69,18 +74,17 @@ export const TeacherOverviewPage = () => {
   }
 
   useEffect(() => {
-    if ( showErrorMessage) {
+    if ( showErrorMessage || showSuccessMessage) {
       setTimeout(() => {
-        
+        setShowSuccessMessage(false)
         setShowErrorMessage(false);
       }, 3000);
-    }else if(showSuccessMessage){
-      setShowSuccessMessage(false)
     }
   }, [showSuccessMessage, showErrorMessage]);
 
   return (
-    
+    <div>
+      <TeacherNavbar/>
       <div className="content-container">
         <h2>Create Check-in Passphrase</h2>
         {showSuccessMessage && (
@@ -124,6 +128,7 @@ export const TeacherOverviewPage = () => {
         type="submit" 
         id="submit-passphrase-button"
         onClick={onGenerateClicked}>Generate</button>
+    </div>
     </div>
   );
 };

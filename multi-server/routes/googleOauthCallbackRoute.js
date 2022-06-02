@@ -42,7 +42,7 @@ router.get('/auth/google/callback', async(req, res) =>{
         process.env.JWT_SECRET,
         (error, token) => {
             if(error) return res.sendStatus(500);
-            res.redirect(`http://localhost:3000/login?token=${token}`);
+            res.redirect(`http://localhost:3000/?token=${token}`);
         })
 })
 

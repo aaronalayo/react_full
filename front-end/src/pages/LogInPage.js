@@ -20,15 +20,27 @@ export const LogInPage = () => {
         
     
     const navigate = useNavigate();
-;
-    // useEffect(() => {
-    //     if(oauthToken) {
-    //         setToken(oauthToken);
 
-    //         navigate('/teacher_overview')
-    //     }
+      function redirectUser(){
+        // alert(user.role)
+        if(user.role === "teacher"){
+          navigate('/teacher_overview')
+        }else if(user.role === "admin"){
+          navigate("/admin")
+        }else if(user.role === "student"){
+          navigate('/student_overview')
+        }else{
+          navigate('/')
+        }
+      }
+    useEffect(() => {
+        if(oauthToken) {
+            setToken(oauthToken);
+
+            navigate('/teacher_overview')
+        }
         
-    // }, [oauthToken, setToken, navigate])
+    }, [oauthToken, setToken, navigate])
 
     useEffect(() => {
         const loadOauthUrl = async () => {
@@ -58,18 +70,6 @@ export const LogInPage = () => {
         navigate( '/signup')
       };
 
-      function redirectUser(){
-        alert(user.role)
-        if(user.role === "teacher"){
-          navigate('/teacher_overview')
-        }else if(user.role === "admin"){
-          navigate("/admin")
-        }else if(user.role === "student"){
-          navigate('/student_overview')
-        }else{
-          navigate('/')
-        }
-      }
     const onLogInClicked = async () => {
         await axios.post('/api/login', {
             email: emailValue,

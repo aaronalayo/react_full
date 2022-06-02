@@ -1,25 +1,35 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 
-export const Navbar = () => {
+export const TeacherNavbar = () => {
+  const navigate =useNavigate();
+  function logout(){
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+  function home(){
+    navigate('/')
+  }
+  function createPassphrase(){
+    navigate("/teacher_overview")
+  }
   return (
     <div className="navbar">
       <div className="logo">Roll Call System</div>
       <div className="menus">
         <ul className="menu">
           <li>
-            <Link to="/">Home</Link>
+          <button onClick={home}>Home</button>
           </li>
           <li>
-            <Link to="">Create Passphrase </Link>
+          <button onClick={createPassphrase}>Create Passphrase</button>
           </li>
           <li>
-            <Link to="">See Students Statistics</Link>
-          </li>
-          <li>
-            <Link to="">logout</Link>
+          <button
+            onClick={logout}
+            >logout</button>
           </li>
         </ul>
       </div>

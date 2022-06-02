@@ -4,6 +4,7 @@ import * as Sentry from "@sentry/react";
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
      <Routing/>
