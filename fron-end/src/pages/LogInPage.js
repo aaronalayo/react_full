@@ -4,11 +4,14 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useToken } from "../auth/useToken";
 import { useQueryParams } from "../util/useQueryParams";
 import { FaGoogle } from 'react-icons/fa'
+import LoginValidate from './LoginValidate'
+// import Logic from './Logic'
+
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 
 export const LogInPage = () => {
-  const [, setToken] = useToken();
+  const [token, setToken] = useToken();
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
@@ -17,6 +20,8 @@ export const LogInPage = () => {
   const [error, setError] = useState(null)
   const [googleOauthUrl, setgoogleOauthUrl] = useState('');
   const { token: oauthToken } = useQueryParams();
+  const { isLoggedIn } = LoginValidate(token)
+
 
   const navigate = useNavigate();
 
@@ -33,6 +38,16 @@ export const LogInPage = () => {
 
   }, [oauthToken, setToken, navigate])
 
+
+  useEffect(() => {
+
+    if(isLoggedIn === true) {
+      console.log('You are already logged in.')
+      navigate('/teacher_overview')
+    } else {
+      console.log('Proceed')
+    }
+  })
 
   // useEffect(() => {
   //   setIsPending(true)
@@ -68,18 +83,21 @@ export const LogInPage = () => {
         }).then(res => {
             const {token} = res.data;
             setToken(token);
-            // console.log(res)
+            // Logic.userToken(token)
+
+            // Logic.loginUser(emailValue, passwordValue);
             //Finds role in JWT. Should be optimised and put into its own component
             const jwt = token.split('.')[1]
             const decoded = JSON.parse(window.atob(jwt))
             const role = decoded['role']
             console.log(role)
 
-            if(role === 'teacher') {
-              navigate('/teacher_overview')
-            } else if (role === 'student') {
-              navigate('/student_overview')
-            }
+
+            // if(UserRole.role === 'teacher') {
+            //   navigate('/teacher_overview')
+            // } else if (UserRole.role === 'student') {
+            //   navigate('/student_overview')
+            // }
 
             // navigate('/teacher_overview');
         }).catch(err => {
@@ -136,7 +154,7 @@ export const LogInPage = () => {
           />
         </div>
 
-        <button className="btn btn-primary btn-block mb-4"
+        <button className="btn btn-success btn-block mb-4"
           disabled={!emailValue || !passwordValue}
           onClick={onLogInClicked}
         >Sign in</button>

@@ -33,7 +33,7 @@ export const Routing = () => {
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
                 <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
-                <Route path="/admin" element={<AdminPage />}></Route>
+                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
                 <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
@@ -43,12 +43,12 @@ export const Routing = () => {
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
                 <Route path="/signup" element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
-                <Route path="/addTeacher" element={<CreateTeacher />}> </Route>
-                <Route path="/teachers" element={<GetTeacherList />}> </Route>
-                <Route path="/students" element={<GetStudentList />}> </Route>
-                <Route path="/addStudent" element={<CreateStudent />}> </Route>
-                <Route path="/updateStudent" element={<UpdateStudent />}> </Route>
-                <Route path="/teachers/updateOne/:id" element={<GetSingleTeacher />}></Route>
+                <Route path="/addTeacher" element={<PrivateRoute><CreateTeacher /></PrivateRoute>}> </Route>
+                <Route path="/teachers" element={<PrivateRoute><GetTeacherList /></PrivateRoute>}> </Route>
+                <Route path="/students" element={<PrivateRoute><GetStudentList /></PrivateRoute>}> </Route>
+                <Route path="/addStudent" element={<PrivateRoute><CreateStudent /></PrivateRoute>}> </Route>
+                <Route path="/updateStudent" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>
+                <Route path="/teachers/updateOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path='*' element={<NotFound />}></Route>
             </Routes>
