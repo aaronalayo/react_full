@@ -24,7 +24,6 @@ import { StudentOverviewPage } from "./pages/student/StudentOverviewPage";
 
 
 
-
 export const Routing = () => {
     return (
         <BrowserRouter>

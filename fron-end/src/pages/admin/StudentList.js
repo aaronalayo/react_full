@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Navbar } from "../../fragment/AdminNav";
 
-
 axios.defaults.baseURL = "http://localhost:8080";
 
 const initialState = {
@@ -40,8 +39,8 @@ export const GetStudentList = () => {
 
   return (
     <div>
-        <Navbar />
-    <div className="wide-content-container">
+      <Navbar />
+      <div className="wide-content-container">
         <br></br>
         <h2>Students List</h2>
         <br></br>
@@ -75,13 +74,13 @@ export const GetStudentList = () => {
                         onClick={navigate(`/students/updateOne/${student_id}`)}
                       >View </button> */}
                       <div className="form-outline mb-4">
-                      <button className="btn btn-success btn-block mb-4"
-                        onClick={() =>
-                          handleEditButtonClick(students.student_id)
-                        }
-                      >
-                        Edit
-                      </button>
+                        <button className="btn btn-success btn-block mb-4"
+                          onClick={() =>
+                            handleEditButtonClick(students.student_id)
+                          }
+                        >
+                          Edit
+                        </button>
                       </div>
                     </td>
                   </tr>
