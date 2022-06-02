@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const swaggerUi = require('swagger-ui-express')
 const app = express();
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: "*" }));
 require('dotenv').config();
 const { authenticateToken } = require('../util/authenticate');
 
@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.get('/teacher_overview', authenticateToken('teacher'), (req, res, next) => {
     next();
+});
+
+app.get("/admin_overview", authenticateToken("admin"), (req, res, next) => {
+  next();
 });
 
 app.get('/student_overview', authenticateToken('student'), (req, res, next) => {

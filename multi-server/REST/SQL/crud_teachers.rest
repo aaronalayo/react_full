@@ -23,14 +23,14 @@ POST http://localhost:8080/api/teachers/updateOne/1
 Content-Type: application/json
 
 {
-    "first_name": "Michaellla",
-    "last_name": "Doeh",
-    "email": "joh@test.com",
+    "first_name": "Asger Batting",
+    "last_name": "Clausen",
+    "email": "ASBC@kea.dk",
     "password": "12345678",
     "department_id": "1"
 }
 
 ###
-POST http://localhost:8080/api/teachers/delete/24
+POST http://localhost:8080/api/teachers/delete/6
 Content-Type: application/json
 

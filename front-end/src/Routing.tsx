@@ -3,13 +3,12 @@ import { EmailVerificationLandingPage } from "./pages/EmailVerificationLandingPa
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
 import { LogInPage } from "./pages/LogInPage";
 import { SignUpPage } from "./pages/SignUpPage";
-import { UserInfoPage } from './pages/UserInfoPage';
 import { PasswordResetLandingPage } from "./pages/PasswordResetLandingPage";
 import { PleaseVerifyEmailPage } from "./pages/PleaseVerifyEmailPage";
 import { PrivateRoute } from "./auth/PrivateRoute";
 import { HealthCheckPage } from "./pages/HealthCheckPage";
 import { TeacherOverviewPage } from "./pages/TeacherOverviewPage";
-import { Admin } from "./pages/Admin";
+import { CreateAdmin } from "./pages/addAdmin";
 import { ToastContainer } from 'react-toastify';
 import { GetTeacherList } from "./pages/TeacherList";
 import { GetStudentList } from "./pages/StudentList";
@@ -29,17 +28,14 @@ import Logout from "./pages/Logout";
 export const Routing = () => {
     return (
         <BrowserRouter>
-            <Navbar />
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
-                <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
-                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
+                <Route path="/" element={<LogInPage />} />
                 <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
-                <Route path="/login" element={<LogInPage />}></Route>
-                <Route path="/logout" element={<Logout />}></Route>
-                <Route path="/reset-password/:passwordResetCode" element={<PasswordResetLandingPage />}></Route>
+                <Route path="/reset-password/:passwordResetCode"
+                    element={<PasswordResetLandingPage />}></Route>
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
                 <Route path="/signup" element={<SignUpPage />}></Route>
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
@@ -49,6 +45,8 @@ export const Routing = () => {
                 <Route path="/addStudent" element={<PrivateRoute><CreateStudent /></PrivateRoute>}> </Route>
                 <Route path="/updateStudent" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>
                 <Route path="/teachers/updateOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
+                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
+                <Route path="/addAdmin" element={<PrivateRoute><CreateAdmin /></PrivateRoute>}> </Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path='*' element={<NotFound />}></Route>
             </Routes>

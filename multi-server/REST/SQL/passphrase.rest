@@ -1,6 +1,6 @@
 ###
 POST http://localhost:8080/api/passphrase
-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQU5ETEBrZWEuZGsiLCJpZCI6NSwiaWF0IjoxNjUxMTQ0Mjk5LCJleHAiOjE2NTEzMTcwOTl9.mX5c5xy8jX0XT4RrlzH7eWT4vf7H_4yDcM822DZavjM
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidGVhY2hlciIsImVtYWlsIjoiQVNCQ0BrZWEuZGsiLCJpZCI6MSwiaWF0IjoxNjUzNjc0MjMwLCJleHAiOjE2NTM4NDcwMzB9.Ynd_aMQ9fMgOFVCqBtq3nf4Ek-osSQNkTpMXd9zNW_8
 Content-Type: application/json
 
 {

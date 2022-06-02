@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
-export const EmailVerificationSuccess = () => {
+export const PasswordResetSuccess = () => {
     const navigate = useNavigate();
  
-    function home() {
+    function login() {
         navigate('/')
       }
     return  (
         <div className="content-container">
             <h1>Success!</h1>
             <p>
-                Thanks for verifying your email, now you can use all the app's features!
+                Your password has been reset, now please login with your new password!
             </p>
-            <button onClick={home}>Go to home page</button>         
+            <button onClick={login}>Log in</button>         
         </div>
     )
 

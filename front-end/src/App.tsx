@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routing } from './Routing';
+import * as Sentry from "@sentry/react";
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
@@ -8,7 +9,11 @@ function App() {
     <div className="App">
      <Routing/>
     </div>
+    
   );
 }
 
-export default App;
+export default Sentry.withProfiler(App);
+
+
+//export default App;

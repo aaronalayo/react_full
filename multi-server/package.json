@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/stefanosAgelastos/multi-db-web-server.git"
   },
-  "author": "Archana Stefanos Tariq",
+  "author": "Archana Aaron Tariq",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/stefanosAgelastos/multi-db-web-server/issues"
@@ -26,11 +26,14 @@
     "swagger-autogen": "^2.17.2"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.6.2",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.5.1",
+    "googleapis": "^100.0.0",
     "jest": "^27.4.3",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
@@ -40,6 +43,7 @@
     "sendgrid": "^5.2.3",
     "sequelize": "^6.7.0",
     "supertest": "^6.1.6",
-    "swagger-ui-express": "^4.3.0"
+    "swagger-ui-express": "^4.3.0",
+    "uuid": "^8.3.2"
   }
 }

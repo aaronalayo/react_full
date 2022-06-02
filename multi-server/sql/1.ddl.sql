@@ -29,6 +29,17 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`subjects` (
 `program_id` INT NOT NULL);
 
 -- -----------------------------------------------------
+-- Table `rollcall_db`.`admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `rollcall_db`.`admin` (
+`admin_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+`first_name` VARCHAR(20) NOT NULL,
+`last_name` VARCHAR(20) NOT NULL,
+`email` VARCHAR(60) NOT NULL UNIQUE,
+`password` VARCHAR(120) NOT NULL);
+
+
+-- -----------------------------------------------------
 -- Table `rollcall_db`.`teachers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `rollcall_db`.`teachers` (
@@ -37,6 +48,11 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`teachers` (
 `last_name` VARCHAR(20) NOT NULL,
 `email` VARCHAR(60) NOT NULL UNIQUE,
 `password` VARCHAR(120) NOT NULL,
+`google_id` VARCHAR(120),
+`is_verified` BOOLEAN NOT NULL DEFAULT 0,
+`verification_string` VARCHAR(120),
+`oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `department_id` INT NOT NULL);
 
 -- -----------------------------------------------------
@@ -77,6 +93,11 @@ CREATE TABLE IF NOT EXISTS `rollcall_db`.`students` (
 `last_name` VARCHAR(20) NOT NULL,
 `user_name` VARCHAR(20) NOT NULL,
 `password` VARCHAR(120) NOT NULL,
+`google_id` VARCHAR(120),
+`is_verified` BOOLEAN NOT NULL DEFAULT 0,
+`verification_string` VARCHAR(120),
+`oauth_email` VARCHAR(120),
+`password_reset_code` VARCHAR(120),
 `program_id` INT NOT NULL);
 
 

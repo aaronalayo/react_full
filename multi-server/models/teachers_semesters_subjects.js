@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
-      primaryKey: true,
+      primaryKey: true
     },
     subject_id: {
       type: DataTypes.INTEGER,

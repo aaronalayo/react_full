@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const uuid = require('uuid').v4
 const db = require("../connectors/db.mysql");
 const rateLimiter = require("../util/rate-limiter");
 const { validateRegister } = require("../util/validate");
@@ -33,15 +34,17 @@ router.post("/signup", async (req, res) => {
   // We receive this from the request body
   const { email, activationCode, password } = req.body;
   const hashed_password = await bcrypt.hash(password, 10);
+  const verificationString = uuid();
 
   db.sequelize.models.teachers
     .findOne({ where: { email: email } })
     .then((teacher) => {
       if (teacher) {
         if (teacher.password === activationCode) {
-          teacher.update({ password: hashed_password });
+          teacher.update({ password: hashed_password, is_verified: false,
+            verification_string: verificationString });
           jwt.sign(
-            { role: "teacher", email: teacher.email, id: teacher.teacher_id },
+            { role: "teacher", email: teacher.email, id: teacher.teacher_id, isVerified:false },
             process.env.JWT_SECRET,
             { expiresIn: "2d" },
             (err, token) => {
@@ -85,6 +88,44 @@ router.post("/signup", async (req, res) => {
             res.status(500).send(err)
           });
       }
+      // else {
+      //   db.sequelize.models.admin
+      //     .findOne({ where: { email } })
+      //     .then((admin) => {
+      //       if (admin) {
+      //         if (admin.password === activationCode) {
+      //           admin.update({ password: hashed_password });
+      //           jwt.sign(
+      //             {
+      //               role: "admin",
+      //               email: admin.email,
+      //               id: admin.admin_id,
+      //             },
+      //             process.env.JWT_SECRET,
+      //             { expiresIn: "2d" },
+      //             (err, token) => {
+      //               if (err) {
+      //                 return res.status(500).send(err);
+      //               }
+      //               console.log("success");
+      //               return res.status(200).json({ token });
+      //             }
+      //           );
+      //         }
+      //         else {
+      //           return res.status(400).send("Student: wrong activation code");
+      //         }
+      //       }
+      //       else {
+      //         return res.status(400).send("Email is not in the system");
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       //   return true;
+      //       console.log(err);
+      //       res.status(500).send(err);
+      //     });
+      // }
     });
 });
 

@@ -6,7 +6,7 @@ const authenticateToken = (role) => {
        
         const { authorization} = req.headers;
         const token = authorization.split(' ')[1];
-        if (token == null) return res.status(401).send('You are not authorised');
+        if (token == null) return res.status(401).send('You are not authorized');
 
         jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
             console.log(user)
