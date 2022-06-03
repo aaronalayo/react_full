@@ -39,7 +39,7 @@ export const GetTeacherList = () => {
 
 
   const handleEditButtonClick = (teacher_id) =>
-      navigate(`/teachers/updateOne/${teacher_id}`);
+      navigate(`/teachers/update/${teacher_id}`);
 
 
   return (
@@ -54,7 +54,7 @@ export const GetTeacherList = () => {
             Add Teacher
           </button>
         </Link> */}
-        <table responsive className="table table-hover">
+        <table className="table table-hover">
           <tr>
             <th scope="col">Teacher Id</th>
             <th scope="col">First Name</th>

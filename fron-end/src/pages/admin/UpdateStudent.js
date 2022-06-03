@@ -19,64 +19,61 @@ const initialState = {
 
 //working
 export const UpdateStudent = () => {
-  // defining the state
-  const [state, setState] = useState(initialState);
-  // destructuring the feilds from state (to avoid writting ex. state.first_name)
-  const { first_name, last_name, user_name, password, program_id } = state;
 
-  // storing the reference of the useHistory in to history variable
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [program_id, setProgramId] = useState("");
+
+  const params = useParams();
   const navigate = useNavigate();
-  const { student_id } = useParams();
+
 
   useEffect(() => {
-    axios
-      .get(`/api/students/findOne/${student_id}`)
-      .then((response) => setState({ ...response.data[0] }));
-  }, [student_id]);
-
-  // handling default behaviour of browser
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!first_name || !last_name || !user_name || !password || !program_id) {
-      toast.error("Please provide value into each input field");
-    } else {
-      // update
-      await axios
-        .patch(`api/students/updateOne/${student_id}`, {
-          //path the body
-          first_name: first_name,
-          last_name: last_name,
-          user_name: user_name,
-          password: password,
-          program_id: program_id,
+    const loadData = async () => {
+      try {
+        await axios.get(`/api/students/findOne/${params.id}`).then((response) => {
+          const data = response.data;
+          setFirstName(data.first_name);
+          setLastName(data.last_name)
+          setPassword(data.password)
+          setProgramId(data.program_id)
+          console.log(data)
+          toast.success(data)
         })
-        .then(() => {
-          // when user is succssfull to add the contain empty the field again
-          setState({
-            student_id: "",
-            first_name: "",
-            last_name: "",
-            user_name: "",
-            password: "",
-            program_id: "",
-          });
-          // catching the error and read from the api
-        })
-        .catch((err) => toast.error(err.response.data));
-      toast.error("Can not add !");
+      } catch (error) {
+        // console.log('Here', error)
+        toast.error(error)
+      }
     }
+    loadData();
+  }, [params.id])
 
-    setTimeout(() => navigate("/students"), 500);
+  const handleSubmit = async () => {
+    await axios
+      .post(`/api/students/findOne/${params.id}`, {
+        //path the body
+        first_name: first_name,
+        last_name: last_name,
+        password: password,
+        program_id: program_id,
+      })
+      .then((response) => {
+        // when user is succssfull to add the contain empty the field again
+        // console.log('Or here', response.data);
+        setFirstName(first_name);
+        setLastName(last_name);
+        setPassword(password);
+        setProgramId(program_id);
+        toast.success(response.data)
+        // catching the error and read from the api
+      })
+      .catch((err) => toast.error(err.response.data));
+    // toast.error("Can not add !");
+
   }
 
 
-  //handling input change (e = event)
-  const handleInputChange = (e) => {
-    //destrusting the name and value from the event.terget so that user can write new value
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  };
   return (
     <div>
       <Navbar />
@@ -92,7 +89,7 @@ export const UpdateStudent = () => {
             name="first_name"
             placeholder="First Name"
             value={""}
-            onChange={handleInputChange}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -103,19 +100,7 @@ export const UpdateStudent = () => {
             name="last_name"
             placeholder="Last Name"
             value={""}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form-outline mb-4">
-          <input
-            className="form-control"
-            type="text"
-            id="user_name"
-            name="user_name"
-            placeholder="User Name"
-            value={""}
-            onChange={handleInputChange}
-          />
+            onChange={(e) => setLastName(e.target.value)} />
         </div>
         <div className="form-outline mb-4">
           <input
@@ -125,7 +110,7 @@ export const UpdateStudent = () => {
             name="password"
             placeholder="password"
             value={""}
-            onChange={handleInputChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -136,7 +121,7 @@ export const UpdateStudent = () => {
             name="program_id"
             placeholder="Program Id"
             value={""}
-            onChange={handleInputChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">

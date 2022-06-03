@@ -3,7 +3,6 @@ import { EmailVerificationLandingPage } from "./pages/authentication/EmailVerifi
 import { ForgotPasswordPage } from "./pages/authentication/ForgotPasswordPage";
 import { LogInPage } from "./pages/authentication/LogInPage";
 import { SignUpPage } from "./pages/authentication/SignUpPage";
-import { UserInfoPage } from './pages/UserInfoPage';
 import { PasswordResetLandingPage } from "./pages/authentication/PasswordResetLandingPage";
 import { PleaseVerifyEmailPage } from "./pages/authentication/PleaseVerifyEmailPage";
 import { PrivateRoute } from "./auth/PrivateRoute";
@@ -29,10 +28,10 @@ export const Routing = () => {
         <BrowserRouter>
             <ToastContainer position="top-center"></ToastContainer>
             <Routes>
-                <Route path="/" element={<PrivateRoute><UserInfoPage /></PrivateRoute>} />
-                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
-                <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
-                <Route path="/updateStudent/:id" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>                <Route path="/student_overview" element={<PrivateRoute><StudentOverviewPage /></PrivateRoute>} />
+                {/* Index */}
+                <Route path="/" element={<PrivateRoute><LogInPage /></PrivateRoute>} />
+
+                {/* Auth  */}
                 <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />}></Route>
                 <Route path="/forgot-password" element={<ForgotPasswordPage />}></Route>
                 <Route path="/login" element={<LogInPage />}></Route>
@@ -40,12 +39,25 @@ export const Routing = () => {
                 <Route path="/reset-password/:passwordResetCode" element={<PasswordResetLandingPage />}></Route>
                 <Route path="/please-verify" element={<PleaseVerifyEmailPage />}></Route>
                 <Route path="/signup" element={<SignUpPage />}></Route>
+
                 <Route path="/health_check" element={<HealthCheckPage />}></Route>
-                <Route path="/addTeacher" element={<PrivateRoute><CreateTeacher /></PrivateRoute>}> </Route>
-                <Route path="/teachers" element={<PrivateRoute><GetTeacherList /></PrivateRoute>}> </Route>
+
+                {/* Admin  */}
+                <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}></Route>
                 <Route path="/students" element={<PrivateRoute><GetStudentList /></PrivateRoute>}> </Route>
+                <Route path="/teachers" element={<PrivateRoute><GetTeacherList /></PrivateRoute>}> </Route>
+                <Route path="/addTeacher" element={<PrivateRoute><CreateTeacher /></PrivateRoute>}> </Route>
                 <Route path="/addStudent" element={<PrivateRoute><CreateStudent /></PrivateRoute>}> </Route>
-                <Route path="/teachers/updateOne/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
+                <Route path="/teachers/update/:id" element={<PrivateRoute><GetSingleTeacher /></PrivateRoute>}></Route>
+                <Route path="/students/update/:id" element={<PrivateRoute><UpdateStudent /></PrivateRoute>}> </Route>
+
+                {/* Teacher */}
+                <Route path="/teacher_overview" element={<PrivateRoute><TeacherOverviewPage /></PrivateRoute>} />
+                
+                {/* Student */}
+                <Route path="/student_overview" element={<PrivateRoute><StudentOverviewPage /></PrivateRoute>} />
+
+                {/* General */}
                 <Route path="/about" element={<About />}></Route>
                 <Route path='*' element={<NotFound />}></Route>
             </Routes>

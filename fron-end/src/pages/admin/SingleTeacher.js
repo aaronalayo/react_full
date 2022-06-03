@@ -8,42 +8,68 @@ import { Navbar } from "../../fragment/AdminNav";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
-// defining the initialstate
-const initialState = {
-  teacher_id: "",
-  first_name: "",
-  last_name: "",
-  email: "",
-  password: "",
-  department_id: "",
-};
-
-
 export const GetSingleTeacher = () => {
 
-  const [state, setState] = useState(initialState);
-  const { first_name, last_name, email, password, department_id } = state;
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [department_id, setDepartmentId] = useState("");
 
-  const teacher_id = useParams();
+  const params = useParams();
+  const navigate = useNavigate();
+  function teachers() {
+    navigate('/teachers')
+  }
+
+
+
   useEffect(() => {
-    axios
-      .get(`/api/teachers/findOne/${teacher_id}`)
-      .then((response) => setState({ ...response.data[0] }));
-  }, [teacher_id]);
+    const loadData = async () => {
+      try {
+        await axios.get(`/api/teachers/findOne/${params.id}`).then((response) => {
+          const data = response.data;
+          setFirstName(data.oneTeacher.first_name);
+          setLastName(data.oneTeacher.last_name)
+          setEmail(data.oneTeacher.email)
+          setPassword(data.oneTeacher.password)
+          setDepartmentId(data.oneTeacher.department_id)
+          toast.success(data)
+        })
+      } catch (error) {
+        console.log(error)
+        toast.error(error)
+      }
+    }
+    loadData();
+  }, [params.id])
 
+  // const handleSubmit = async () => {
+  //   await axios
+  //     .post(`api/teachers/updateOne/${params.id}`, {
+  //       //path the body
+  //       first_name: first_name,
+  //       last_name: last_name,
+  //       email: email,
+  //       password: password,
+  //       department_id: department_id,
+  //     })
+  //     .then((response) => {
+  //       // when user is succssfull to add the contain empty the field again
+  //       console.log(response.data);
+  //       setFirstName(first_name);
+  //       setLastName(last_name);
+  //       setEmail(email);
+  //       setPassword(password);
+  //       setDepartmentId(department_id);
+  //       teachers();
+  //       // catching the error and read from the api
+  //     })
+  //     .catch((err) => toast.error(err.response.data));
+  //   // toast.error("Can not add !");
 
-  const handleInputChange = (e) => {
-    //destrusting the name and value from the event.terget so that user can write new value
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
+  // };
 
-    const token = localStorage.getItem('token')
-    const jwt = token.split('.')[1]
-    const decoded = JSON.parse(window.atob(jwt))
-    const email = decoded['email']
-    console.log(email)
-
-  };
   return (
     <div>
       <Navbar />
@@ -53,22 +79,22 @@ export const GetSingleTeacher = () => {
           <input
             className="form-control"
             type="text"
-            id="name"
+            id="first_name"
             name="first_name"
             placeholder="First Name"
             value={first_name}
-            onChange={handleInputChange}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
           <input
             className="form-control"
             type="text"
-            id="name"
+            id="last_name"
             name="last_name"
             placeholder="Last Name"
             value={last_name}
-            onChange={handleInputChange}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -79,7 +105,7 @@ export const GetSingleTeacher = () => {
             name="email"
             placeholder="Email"
             value={email}
-            onChange={handleInputChange}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -90,7 +116,7 @@ export const GetSingleTeacher = () => {
             name="password"
             placeholder="password"
             value={password}
-            onChange={handleInputChange}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -101,7 +127,7 @@ export const GetSingleTeacher = () => {
             name="department_id"
             placeholder="Department Id"
             value={department_id}
-            onChange={handleInputChange}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-outline mb-4">
@@ -122,48 +148,6 @@ export const GetSingleTeacher = () => {
     </div>
   );
 }
-
-
-
-//         await axios
-//             .patch(`api/teachers/updateOne/${teacher_id}`, {
-//                 //path the body
-//                 first_name: first_name,
-//                 last_name: last_name,
-//                 email: email,
-//                 password: password,
-//                 department_id: department_id,
-//             })
-//             .then(() => {
-//                 // when user is succssfull to add the contain empty the field again
-//                 setState({
-//                     first_name: "",
-//                     last_name: "",
-//                     email: "",
-//                     password: "",
-//                     department_id: "",
-//                 });
-//                 // catching the error and read from the api
-//             })
-//             .catch((err) => toast.error(err.response.data));
-//         toast.error("Can not add !");
-            
-//     }
-// }
-   
-// //handling input change (e = event)
-//     const handleInputChange = (e) => {
-// //destrusting the name and value from the event.terget so that user can write new value
-//         const { name, value } = e.target;
-//         setState({ ...state, [name]: value });
-//     }
-
-
-
-
-
-
-
 
 
 

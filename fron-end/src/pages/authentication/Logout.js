@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToken } from "../../auth/useToken";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Logout = () => {
 
@@ -11,10 +12,10 @@ export const Logout = () => {
       console.log(token)
 
       if (token === null) {
-        console.log('Not logged in')
+        toast.error('Not signed in')
         navigate('/login')
       } else {
-        console.log('Logging out now ... ')
+        toast.success('Signed out :) ')
         localStorage.clear();
         navigate('/login')
       }

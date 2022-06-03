@@ -35,7 +35,7 @@ export const GetStudentList = () => {
   console.log(data);
 
   const handleEditButtonClick = (student_id) =>
-    navigate(`/updateStudent/${student_id}`);
+    navigate(`/students/update/${student_id}`);
 
   return (
     <div>
@@ -49,7 +49,7 @@ export const GetStudentList = () => {
             Add Student
           </button>
         </Link> */}
-        <table responsive className="table table-hover">
+        <table className="table table-hover">
           <tr>
             <th scope="col">Student Id</th>
             <th scope="col">First Name</th>

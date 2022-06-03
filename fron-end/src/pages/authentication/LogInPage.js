@@ -5,6 +5,8 @@ import { useToken } from "../../auth/useToken";
 import { useQueryParams } from "../../util/useQueryParams";
 import { FaGoogle } from 'react-icons/fa'
 import LoginValidate from './LoginValidate'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -21,6 +23,7 @@ export const LogInPage = () => {
   const [googleOauthUrl, setgoogleOauthUrl] = useState('');
   const { token: oauthToken } = useQueryParams();
   const { isLoggedIn } = LoginValidate(token)
+  
 
   const navigate = useNavigate();
 
@@ -41,9 +44,11 @@ export const LogInPage = () => {
   useEffect(() => {
 
     if(isLoggedIn === true) {
-      console.log('You are already logged in.')
+      console.log('Already signed in')
+      // navigate('/')
     } else {
-      console.log('Not logged in. Please login')
+      console.log('Not signed in. Please sign in')
+      // navigate(-1)
     }
   })
 
@@ -74,7 +79,6 @@ export const LogInPage = () => {
   
       const onLogInClicked = async () => {
         
-        console.log('Clicked')
         await axios.post('/api/login', {
             email: emailValue,
             password: passwordValue,
@@ -95,21 +99,20 @@ export const LogInPage = () => {
               navigate('/admin')
             }
 
+            console.log(res.data.status)
+
+            toast.success('Success')
+
             // navigate('/teacher_overview');
         }).catch(err => {
-          if (err.response) {
-                
+          
+          toast.error(err)                
             // setShowErrorMessage(err.response.data)
 
             // // Request made and server responded
             // console.log(err.response.data);
             // console.log(err.response.status);
             // console.log(err.response.headers);
-        
-            }
-
-      // setError(err.message);
-      // setIsPending(false);
     })
 
 
